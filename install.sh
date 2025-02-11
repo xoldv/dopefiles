@@ -4,22 +4,22 @@ bold=$(tput bold)
 
 function installing_func(){
     brew_installing
-    echo -ne '######                     (12.5%)\r'
+    # echo -ne '######                     (12.5%)\r'
     zsh_isntalling
-    echo -ne '##########                 (25%)\r'
+    # echo -ne '##########                 (25%)\r'
     oh_my_zsh_installing
-    echo -ne '#############              (37.5%)\r'
+    # echo -ne '#############              (37.5%)\r'
     powerlevel10k_installing
-    echo -ne '###############            (50%)\r'
+    # echo -ne '###############            (50%)\r'
     brew_stuff_installing
-    echo -ne '#################          (62.5%)\r'
+    # echo -ne '#################          (62.5%)\r'
     backup_nvim
-    echo -ne '######################     (75%)\r'
+    # echo -ne '######################     (75%)\r'
     remove_all_old_configs
-    echo -ne '########################   (87.5%)\r'
+    # echo -ne '########################   (87.5%)\r'
     repo_downloading
-    echo -ne '########################## (99.9%)\r'
-    sleep 1
+    # echo -ne '########################## (99.9%)\r'
+    # sleep 1
     echo "$(bold) Congratulations!"
 }
 
@@ -41,7 +41,7 @@ function zsh_installing(){
     else
         exec zsh
         brew install zsh
-        source ~/.zshrc
+        # source ~/.zshrc
     fi
     return
 
@@ -53,6 +53,8 @@ function oh_my_zsh_installing(){
         echo "${bold}Oh-My-ZSH already installed!"
     else
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         if [[ $SHELL = /bin/bash/ ]]; then
             chsh -s $(which zsh)
         fi
@@ -75,10 +77,30 @@ function powerlevel10k_installing(){
     return
 }
 
-function brew_stuff_installing(){
-    brew install kitty neovim tmux lf yabai skhd fastfetch eza btop
+function brew_check_status(){
+    local installing="$1"
+    local name="$2"
+    if [[ $installing =~ "Not installed" ]]; then
+        brew install $name
+    else
+        echo "$name alerady installed!"
+    fi   
     return
 }
+
+
+function brew_stuff_installing(){
+
+    stuff=("neovim" "lf" "tmux" "eza" "yabai" "skhd" "fastfetch" "btop" "spicetify-cli")
+    for brew_service in ${stuff[@]}; do
+        brew_check_status "$(brew info "${brew_service}")" "$brew_service"
+    done
+    # kitty installing or updating
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+    return
+}
+
 
 function backup_nvim(){
     while true; do
@@ -111,14 +133,14 @@ function remove_all_old_configs(){
 }
 
 function repo_downloading(){
-    mv dopefiles/nvim ~/.config/
-    mv dopefiles/kitty ~/.config/
-    mv dopefiles/.tmux.conf ~/
-    mv dopefiles/lf ~/.config/
-    mv dopefiles/yabai ~/.config/
-    mv dopefiles/skhd ~/.config/
-    mv dopefiles/fastfetch ~/.config/
-    mv dopefiles/kitty ~/.config/
+    mv ~/dopefiles/nvim ~/.config/
+    mv ~/dopefiles/kitty ~/.config/
+    mv ~/dopefiles/.tmux.conf ~/
+    mv ~/dopefiles/lf ~/.config/
+    mv ~/dopefiles/yabai ~/.config/
+    mv ~/dopefiles/skhd ~/.config/
+    mv ~/dopefiles/fastfetch ~/.config/
+    mv ~/dopefiles/kitty ~/.config/
     rm -rf ~/.zshrc && mv dopefiles/.zshrc ~/
     source ~/.zshrc
     return
