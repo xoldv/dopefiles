@@ -49,9 +49,9 @@ function oh_my_zsh_installing(){
     else
         export RUNZSH=no
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        if [[ $SHELL = /bin/bash/ ]]; then
-            chsh -s $(which zsh)
-        fi
+        # if [[ $SHELL = /bin/bash/ ]]; then
+        #     chsh -s $(which zsh)
+        # fi
     fi
     return
 
@@ -62,7 +62,6 @@ function powerlevel10k_installing(){
     theme=$(grep -c "p10k" ~/.zshrc)
     if [[ $theme -le 0 ]]; then
         rm -rf ~/.p10k.zsh
-        export RUNZSH=no
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
     else
@@ -78,7 +77,7 @@ function brew_check_status(){
     if [[ $installing =~ "Not installed" ]]; then
         brew install $name
     else
-        echo "$name alerady installed!"
+        echo "$name already installed!"
     fi   
     return
 }
@@ -136,6 +135,7 @@ function repo_downloading(){
     mv ~/dopefiles/skhd ~/.config/
     mv ~/dopefiles/fastfetch ~/.config/
     mv ~/dopefiles/kitty ~/.config/
+    mv ~/dopefiles/.p10k.zsh ~/
     rm -rf ~/.zshrc && mv dopefiles/.zshrc ~/
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
