@@ -111,14 +111,14 @@ function remove_all_old_configs(){
 }
 
 function repo_downloading(){
-    mv dopefiles/.config/nvim ~/.config/
-    mv dopefiles/.config/kitty ~/.config/
+    mv dopefiles/nvim ~/.config/
+    mv dopefiles/kitty ~/.config/
     mv dopefiles/.tmux.conf ~/
-    mv dopefiles/.config/lf ~/.config/
-    mv dopefiles/.config/yabai ~/.config/
-    mv dopefiles/.config/skhd ~/.config/
-    mv dopefiles/.config/fastfetch ~/.config/
-    mv dopefiles/.config/kitty ~/.config/
+    mv dopefiles/lf ~/.config/
+    mv dopefiles/yabai ~/.config/
+    mv dopefiles/skhd ~/.config/
+    mv dopefiles/fastfetch ~/.config/
+    mv dopefiles/kitty ~/.config/
     rm -rf ~/.zshrc && mv dopefiles/.zshrc ~/
     source ~/.zshrc
     return
