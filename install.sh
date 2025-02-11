@@ -20,7 +20,6 @@ function installing_func(){
     repo_downloading
     # echo -ne '########################## (99.9%)\r'
     # sleep 1
-    echo "$(bold) Congratulations!"
 }
 
 function brew_installing(){
@@ -36,25 +35,20 @@ function brew_installing(){
 
 function zsh_installing(){
     if [[ $SHELL = /bin/zsh/ ]]; then
-        # source ~/.zshrc
         echo "${bold}ZSH already isntalled!"
     else
-        exec zsh
         brew install zsh
-        # source ~/.zshrc
     fi
     return
 
 }
 
 function oh_my_zsh_installing(){
-    source ~/.zshrc
     if [[ $ZSH = $(pwd)/.oh-my-zsh ]]; then
         echo "${bold}Oh-My-ZSH already installed!"
     else
+        export RUNZSH=no
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         if [[ $SHELL = /bin/bash/ ]]; then
             chsh -s $(which zsh)
         fi
@@ -66,10 +60,11 @@ function oh_my_zsh_installing(){
 
 function powerlevel10k_installing(){
     theme=$(grep -c "p10k" ~/.zshrc)
-
     if [[ $theme -le 0 ]]; then
+        rm -rf ~/.p10k.zsh
+        export RUNZSH=no
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-        source ~/.zshrc
+
     else
         echo "${bold}Theme PowerLevel10k already isntalled!"
 
@@ -96,7 +91,7 @@ function brew_stuff_installing(){
         brew_check_status "$(brew info "${brew_service}")" "$brew_service"
     done
     # kitty installing or updating
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
     return
 }
@@ -142,8 +137,44 @@ function repo_downloading(){
     mv ~/dopefiles/fastfetch ~/.config/
     mv ~/dopefiles/kitty ~/.config/
     rm -rf ~/.zshrc && mv dopefiles/.zshrc ~/
-    source ~/.zshrc
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
     return
 }
 
 installing_func
+
+echo "Установка zsh по умолчанию:"
+chsh -s $(which zsh)
+clear
+cat << "EOF"
+
+          ⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡴⠶⠚⠛⠛⠛⠛⠓⠶⢦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
+          ⠀⠀⠀⠀⠀⣠⡴⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢦⣄⠀⠀⠀⠀⠀
+          ⠀⠀⠀⣠⡾⠋⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⣶⡍⠙⣷⣦⠀⠙⢷⣄⠀⠀⠀          
+          ⠀⠀⣴⠋⠀⢠⣾⣿⡟⠉⠙⣿⣷⣆⠀⠀⠀⠀⠙⠁⠀⣼⡿⠀⠀⠀⠹⣦⠀⠀          
+          ⠀⣼⠃⠀⢠⣿⣿⣿⠀⠀⠀⢸⣿⣿⣇⠀⠀⠀⠀⠈⠛⣧⣄⠀⠀⠀⠀⠘⣧⠀
+          ⢰⡏⠀⠀⢸⣿⣿⣿⠀⠀⠀⢸⣿⣿⣿⡀⠀⢠⣶⡆⠀⣸⣿⠇⠀⠀⠀⠀⢹⡆
+          ⣾⠁⠀⠀⠸⣿⣿⣿⡀⠀⠀⣸⣿⣿⣿⡇⠀⠀⠛⠦⠶⠛⠋⠀⠀⠀⠀⠀⠀⣷
+          ⣿⠀⠀⠀⠀⠙⢿⣿⣷⣄⣠⢿⣿⣿⣿⡇⠀⠀⠉⠉⢉⣉⠉⠁⠀⠀⠀⠀⠀⣿              ＳＵＣＣＥＳＳＦＵＬ ＩＮＳＴＡＬＬＩＮＧ！
+          ⢿⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⢸⣿⣿⣿⠁⠀⠀⠀⢠⣿⣿⠀⠀⠀⠀⠀⠀⠀⡿
+          ⠸⣇⠀⠀⠀⣴⣾⣶⣆⠀⠀⣸⣿⣿⡏⠀⠀⠀⣠⠏⣿⣿⠀⠀⠀⠀⠀⠀⣸⠇
+          ⠀⢻⡄⠀⠀⢿⣿⡿⠋⠀⢀⣿⣿⠏⠀⠀⠀⢰⣏⣀⣿⣿⣀⠀⠀⠀⠀⢠⡟⠀
+          ⠀⠀⠻⣆⠀⠈⠙⠛⠶⠞⠛⠋⠁⠀⠀⠀⠀⠈⠉⠉⣿⣿⠉⠀⠀⠀⣰⠟⠀⠀
+          ⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠉⠀⣠⡾⠋⠀⠀⠀
+          ⠀⠀⠀⠀⠀⠙⠳⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠞⠋⠀⠀⠀⠀⠀
+          ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠳⠶⢤⣤⣤⣤⣤⡤⠶⠞⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
+
+                                                                                                                      𝟓𝟎𝟕𝟎𝟏𝟓†
+EOF
+while true; do
+    read -p "Reload terminal with zsh (y/n)? " yn
+    case $yn in
+        [Yy]* ) exec zsh; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+
+
