@@ -4,22 +4,11 @@ bold=$(tput bold)
 
 function installing_func(){
     brew_installing
-    # echo -ne '######                     (12.5%)\r'
-    zsh_isntalling
-    # echo -ne '##########                 (25%)\r'
     oh_my_zsh_installing
-    # echo -ne '#############              (37.5%)\r'
     powerlevel10k_installing
-    # echo -ne '###############            (50%)\r'
     brew_stuff_installing
-    # echo -ne '#################          (62.5%)\r'
     backup_nvim
-    # echo -ne '######################     (75%)\r'
-    remove_all_old_configs
-    # echo -ne '########################   (87.5%)\r'
-    repo_downloading
-    # echo -ne '########################## (99.9%)\r'
-    # sleep 1
+    full_replacing_files
 }
 
 function brew_installing(){
@@ -28,25 +17,20 @@ function brew_installing(){
         echo "${bold}Brew already installed!"
     else
         echo "${bold}brew not installed"
+        echo "${bold}Installing Brew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
     return
-}
-
-function zsh_installing(){
-    if [[ $SHELL = /bin/zsh/ ]]; then
-        echo "${bold}ZSH already isntalled!"
-    else
-        brew install zsh
-    fi
-    return
-
 }
 
 function oh_my_zsh_installing(){
     if [[ $ZSH = $(pwd)/.oh-my-zsh ]]; then
         echo "${bold}Oh-My-ZSH already installed!"
     else
+
+        echo "${bold}Installing Oh-My-ZSH..."
         export RUNZSH=no
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         # if [[ $SHELL = /bin/bash/ ]]; then
@@ -64,6 +48,10 @@ function powerlevel10k_installing(){
         rm -rf ~/.p10k.zsh
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
+        echo "${bold}Installing ZSH plugins..."
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
     else
         echo "${bold}Theme PowerLevel10k already isntalled!"
 
@@ -75,6 +63,7 @@ function brew_check_status(){
     local installing="$1"
     local name="$2"
     if [[ $installing =~ "Not installed" ]]; then
+        echo "${bold}Installing $name..."
         brew install $name
     else
         echo "$name already installed!"
@@ -115,32 +104,14 @@ function backup_nvim(){
     
 }
 
-function remove_all_old_configs(){
-    rm ~/.tmux.conf && rm -rf ~/.tmux 
-    rm -rf ~/.config/lf
-    rm -rf ~/.config/yabai
-    rm -rf ~/.config/skhd
-    rm -rf ~/.config/fastfetch
-    rm -rf ~/.config/kitty
-    rm -rf ~/.config/.tmux.conf && rm -rf ~/.config/.zshrc && rm -rf ~/.config/cornechoc.json
+function full_replacing_files(){
+    cp -fr ~/dopefiles/ ~/.config/
+    cp -f ~/.config/.zshrc ~/
+    cp -f ~/.config/.tmux.conf ~/
+    cp -f ~/.config/.p10k.zsh ~/
     return
 }
 
-function repo_downloading(){
-    mv ~/dopefiles/nvim ~/.config/
-    mv ~/dopefiles/kitty ~/.config/
-    mv ~/dopefiles/.tmux.conf ~/
-    mv ~/dopefiles/lf ~/.config/
-    mv ~/dopefiles/yabai ~/.config/
-    mv ~/dopefiles/skhd ~/.config/
-    mv ~/dopefiles/fastfetch ~/.config/
-    mv ~/dopefiles/kitty ~/.config/
-    mv ~/dopefiles/.p10k.zsh ~/
-    rm -rf ~/.zshrc && mv dopefiles/.zshrc ~/
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    return
-}
 
 installing_func
 

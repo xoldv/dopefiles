@@ -25,6 +25,7 @@ return {
                 "clangd",            -- Для C/C++
                 "ts_ls",          -- Для TypeScript/JavaScript
                 "dockerls",          -- Для Docker
+                "bashls"
             },
         })
 
