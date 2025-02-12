@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-bold=$(tput bold)
+BGreen="\033[1;32m"
+Blue="\033[0;94m"
+
 
 function installing_func(){
     brew_installing
@@ -14,10 +16,9 @@ function installing_func(){
 function brew_installing(){
     if command -v brew >/dev/null 
     then 
-        echo "${bold}Brew already installed!"
+        echo -e "${BGreen}Brew already installed!"
     else
-        echo "${bold}brew not installed"
-        echo "${bold}Installing Brew..."
+        echo -e "${Blue}Installing Brew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -27,10 +28,10 @@ function brew_installing(){
 
 function oh_my_zsh_installing(){
     if [[ $ZSH = $(pwd)/.oh-my-zsh ]]; then
-        echo "${bold}Oh-My-ZSH already installed!"
+        echo -e "${BGreen}Oh-My-ZSH already installed!"
     else
 
-        echo "${bold}Installing Oh-My-ZSH..."
+        echo -e "${Blue}Installing Oh-My-ZSH..."
         export RUNZSH=no
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         # if [[ $SHELL = /bin/bash/ ]]; then
@@ -48,12 +49,12 @@ function powerlevel10k_installing(){
         rm -rf ~/.p10k.zsh
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
-        echo "${bold}Installing ZSH plugins..."
+        echo -e "${Blue}Installing ZSH plugins..."
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
     else
-        echo "${bold}Theme PowerLevel10k already isntalled!"
+        echo -e "${BGreen}Theme PowerLevel10k already isntalled!"
 
     fi
     return
@@ -63,10 +64,10 @@ function brew_check_status(){
     local installing="$1"
     local name="$2"
     if [[ $installing =~ "Not installed" ]]; then
-        echo "${bold}Installing $name..."
+        echo -e "${Blue}Installing $name..."
         brew install $name
     else
-        echo "$name already installed!"
+        echo -e "${BGreen}$name already installed!"
     fi   
     return
 }
@@ -115,7 +116,7 @@ function full_replacing_files(){
 
 installing_func
 
-echo "Установка zsh по умолчанию:"
+echo -e "${BGreen}Установка zsh по умолчанию:"
 chsh -s $(which zsh)
 clear
 cat << "EOF"
