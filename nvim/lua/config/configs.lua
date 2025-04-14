@@ -49,4 +49,8 @@ vim.opt.fillchars = {
     foldclose = "▸"
 }
 
-
+-- RUSSIAN VODKAAA
+-- vim.opt.keymap = "russian-jcukenwin"
+vim.opt.langmap =
+  "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ," ..
+  "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"

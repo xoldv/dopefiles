@@ -2,7 +2,7 @@
 
 BGreen="\033[1;32m"
 Blue="\033[0;94m"
-
+NC='\033[0m'
 
 function installing_func(){
     brew_installing
@@ -88,7 +88,7 @@ function brew_stuff_installing(){
 
 function backup_nvim(){
     while true; do
-        read -p "Make a backup of your current nvim config (y/n)?" yn
+        read -p "Make a backup of your current nvim config (y/n)? " yn
         case $yn in
             [Yy]* ) mv ~/.config/nvim ~/.config/nvim.bak; mv ~/.local/share/nvim ~/.local/share/nvim.bak; mv ~/.local/state/nvim; ~/.local/state/nvim.bak mv ~/.cache/nvim ~/.cache/nvim.bak; break;;
             [Nn]* ) break;;
@@ -107,16 +107,16 @@ function backup_nvim(){
 
 function full_replacing_files(){
     cp -fr ~/dopefiles/ ~/.config/
-    cp -f ~/.config/.zshrc ~/
-    cp -f ~/.config/.tmux.conf ~/
-    cp -f ~/.config/.p10k.zsh ~/
+    ln -s ~/.config/.zshrc ~/
+    ln -s ~/.config/.tmux.conf ~/
+    ln -s ~/.config/.p10k.zsh ~/
     return
 }
 
 
 installing_func
 
-echo -e "${BGreen}Установка zsh по умолчанию:"
+echo -e "${BGreen}Установка zsh по умолчанию:${NC}"
 chsh -s $(which zsh)
 clear
 cat << "EOF"
@@ -147,6 +147,3 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-
-
-
