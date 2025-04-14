@@ -13,6 +13,6 @@
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) config
 ## Clean Setup (MacOS)
 ```bash
-git clone git@github.com:507015T/dopefiles.git ~/ && ~/dopefiles/install.sh
+cd && git clone git@github.com:507015T/dopefiles.git && ~/dopefiles/install.sh
 ```
 
