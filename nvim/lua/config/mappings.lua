@@ -36,3 +36,6 @@ vim.keymap.set('n', '<F4>', ':DapStepOut<CR>')
 
 -- Go to declaration
 vim.api.nvim_set_keymap('n', 'gd', '<C-]>', { noremap = true, silent = true })
+
+-- fasting change name
+vim.keymap.set('n', 'ms', '*:%s//')
