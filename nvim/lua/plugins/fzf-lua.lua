@@ -13,9 +13,6 @@ return {
 					fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
 				},
 			},
-			fzf_opts = {
-				["--multi"] = "false",
-			},
 			keymap = {
 				fzf = {
 					["tab"] = "down",
