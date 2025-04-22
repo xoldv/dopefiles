@@ -39,5 +39,3 @@ vim.api.nvim_set_keymap("n", "gd", "<C-]>", { noremap = true, silent = true })
 
 -- fasting change name
 vim.keymap.set("n", "ms", "*:%s//")
-
-vim.keymap.set("n", "<C-y>", "<C-d>", { noremap = true })
