@@ -26,6 +26,7 @@ vim.api.nvim_create_user_command("ToggleBackground", function()
 	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
 	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
 	vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
+	vim.api.nvim_set_hl(0, "BufferLineFill", { bg = vim.o.background == "light" and "#F9F1CB" or "#282828" })
 	apply_italic_highlights()
 end, { desc = "Toggle between light and dark background with italics" })
 
