@@ -3,7 +3,7 @@
 ## Contents
 - Vim (Neovim) config
 - [Kitty](https://sw.kovidgoyal.net/kitty/)(terminal) config
-	Font **JetBrains Mono NL**
+	Font **PlemolJP Console NF**
 - [Tmux](https://github.com/tmux/tmux) config
 - Zsh config
 - Corne choc (42 keys) config
