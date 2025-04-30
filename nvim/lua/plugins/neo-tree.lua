@@ -53,7 +53,7 @@ return {
 			},
 			window = {
 				position = "float",
-				width = 30,
+				width = 25,
 			},
 			filesystem = {
 				commands = {
