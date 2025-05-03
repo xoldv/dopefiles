@@ -44,8 +44,8 @@ return {
 			callback = function()
 				vim.api.nvim_set_hl(0, "Visual", { reverse = true })
 				local diagnostic_colors = {
-					Error = { fg = "#cc241d", reverse = true },
-					Warn = { fg = "#fabd2f" },
+					Error = { fg = "#c14a4a", reverse = true },
+					Warn = { fg = "#b47109" },
 					Info = { fg = "#458588" },
 					Hint = { fg = "#689d6a" },
 				}
