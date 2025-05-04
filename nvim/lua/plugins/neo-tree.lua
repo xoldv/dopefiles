@@ -2,7 +2,6 @@ return {
 	"nvim-neo-tree/neo-tree.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
 	event = "VeryLazy",
@@ -38,15 +37,13 @@ return {
 				git_status = {
 					symbols = {
 						-- Change type
-						added = " ",
-						deleted = " ",
-						modified = " ",
-						renamed = " ",
+						added = "+ ",
+						-- deleted = " ",
+						-- modified = " ",
 						-- Status type
-						untracked = " ",
-						ignored = " ",
-						unstaged = " ",
-						staged = " ",
+						untracked = "? ",
+						unstaged = "! ",
+						staged = "+ ",
 						conflict = " ",
 					},
 				},
