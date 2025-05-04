@@ -4,20 +4,9 @@ option_as_alt = "Both"
 
 [font]
 size = 18
-[font.bold]
-family = "PlemolJP Console NF"
-style = "Bold"
-
-[font.bold_italic]
-family = "PlemolJP Console NF"
-style = "Bold Italic"
-
-[font.italic]
-family = "PlemolJP Console NF"
-style = "Italic"
 
 [font.normal]
-family = "PlemolJP Console NF"
+family = "Menlo Nerd Font"
 style = "Regular"
 
 # moving between tmux windows cmd+a, cmd+s, cmd+d etc..
