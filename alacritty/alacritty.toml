@@ -78,7 +78,3 @@ action = "Copy"
 key = "V"
 mods = "Command"
 action = "Paste"
-[general]
-import = [
-    "~/.config/alacritty/themes/themes/gruvbox_material_medium_dark.toml"
-]
