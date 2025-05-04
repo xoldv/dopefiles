@@ -1,9 +1,6 @@
-vim.wo.number = true
-vim.wo.relativenumber = true
-
 vim.g.did_load_filetypes = 1
 vim.g.formatoptions = "qrn1"
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.updatetime = 100
 vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
@@ -41,7 +38,7 @@ vim.opt.smartindent = true
 vim.opt.fillchars = {
 	vert = "│",
 	fold = "⠀",
-	eob = " ", -- suppress ~ at EndOfBuffer
+	-- eob = " ", -- suppress ~ at EndOfBuffer
 	-- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
 	msgsep = "‾",
 	foldopen = "▾",
@@ -62,3 +59,16 @@ vim.opt.conceallevel = 1
 vim.cmd([[highlight clear SignColumn]])
 vim.opt.termguicolors = true
 
+
+function LspStatus()
+	local clients = vim.lsp.get_active_clients()
+	if #clients == 0 then
+		return "LSP: Inactive"
+	end
+	local names = {}
+	for _, client in ipairs(clients) do
+		table.insert(names, client.name)
+	end
+	return "LSP: " .. table.concat(names, ", ")
+end
+vim.o.statusline = "%f %y %m %= %l:%c [%p%%] %{v:lua.LspStatus()}"
