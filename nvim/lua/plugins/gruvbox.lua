@@ -73,6 +73,7 @@ return {
 				vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#333852" })
 			end,
 		})
+        vim.g.gruvbox_material_background = 'hard'
 		vim.cmd.colorscheme("gruvbox-material")
 		apply_italic_highlights()
 	end,
