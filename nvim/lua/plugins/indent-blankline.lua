@@ -8,7 +8,5 @@ return {
 		require("ibl").setup({
 			indent = { char = "▏" },
 		})
-
-		vim.cmd([[highlight clear LineNr]])
 	end,
 }
