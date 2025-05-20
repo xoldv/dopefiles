@@ -1,10 +1,6 @@
 -- Заставка
 return {
     "goolord/alpha-nvim",
-    dependencies = {
-        'nvim-tree/nvim-web-devicons',
-    },
-
     config = function()
         local function read_ascii_art(file_path)
             local lines = {}

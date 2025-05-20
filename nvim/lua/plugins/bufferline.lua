@@ -9,19 +9,22 @@ return {
 				mode = "buffers",
 				show_buffer_close_icons = false,
 				show_close_icon = false,
-				always_show_bufferline = true,
+				always_show_bufferline = false,
 				diagnostics = "nvim_lsp",
 				show_buffer_icons = false,
 				numbers = "ordinal",
-				max_name_length = 10,
-				tab_size = 10,
+				max_name_length = 15,
+				tab_size = 0,
+				truncate_names = true,
+				indicator = { style = "none" },
+				buffer_close_icon = "",
+				close_icon = "",
 			},
 			highlights = {
 				buffer_selected = {
-					italic = true,
 					bold = true,
+					italic = true,
 				},
-				fill = { fg = "#282828", bg = "#181818" },
 			},
 		})
 
@@ -42,6 +45,9 @@ return {
 		end
 		vim.keymap.set("n", "<A-0>", function()
 			go_to_visual_buffer(10)
+		end, { noremap = true, silent = true })
+		vim.keymap.set("n", "<Leader>x", function()
+			vim.cmd("bdelete")
 		end, { noremap = true, silent = true })
 	end,
 }
