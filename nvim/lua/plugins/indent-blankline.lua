@@ -6,7 +6,6 @@ return {
 	opts = {},
 	config = function()
 		require("ibl").setup({
-			-- debounce = 100,
 			indent = { char = "▏" },
 		})
 
