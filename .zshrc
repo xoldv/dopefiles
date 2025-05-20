@@ -3,9 +3,6 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 clear
 fastfetch
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -18,7 +15,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="default"
-autoload -U colors && colors
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -121,8 +117,8 @@ export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export PGDATABASE=postgres
 alias n=nvim
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # zsh_theme
 source ~/gitstatus/gitstatus.prompt.zsh
 export PS1='%{%F{red}%}%n@%m%{%f%}:%{%F{blue}%}%~%{%f%}${GITSTATUS_PROMPT}$ '
+
 
