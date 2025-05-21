@@ -21,8 +21,8 @@ vim.api.nvim_create_user_command("ToggleBackground", function()
 	end
 
 	vim.cmd.colorscheme("gruvbox-material")
-	vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.o.background == "light" and "#dbddeb" or "#333852" })
-	vim.api.nvim_set_hl(0, "CursorColumn", { bg = vim.o.background == "light" and "#dbddeb" or "#333852" })
+	-- vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.o.background == "light" and "#dbddeb" or "#333852" })
+	-- vim.api.nvim_set_hl(0, "CursorColumn", { bg = vim.o.background == "light" and "#dbddeb" or "#333852" })
 	vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
 	vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
 	vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = vim.o.background == "light" and "#ffffff" or "#504945" })
@@ -37,6 +37,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
+        vim.g.gruvbox_material_transparent_background = 1
 		vim.g.gruvbox_material_enable_italic = 1
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			pattern = "gruvbox-material",
@@ -51,7 +52,7 @@ return {
 				for type, color in pairs(diagnostic_colors) do
 					vim.api.nvim_set_hl(0, "DiagnosticVirtualText" .. type, {
 						fg = color.fg,
-						bg = "#263238",
+						bg = "#393939",
 					})
 				end
 				-- brackets
@@ -68,8 +69,8 @@ return {
 					bg = "#504945",
 				})
 
-				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#333852" })
-				vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#333852" })
+				-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#333852" })
+				-- vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#333852" })
 			end,
 		})
 		vim.g.gruvbox_material_background = "hard"
