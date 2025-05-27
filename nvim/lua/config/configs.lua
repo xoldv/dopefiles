@@ -2,7 +2,7 @@ vim.g.did_load_filetypes = 1
 vim.g.formatoptions = "qrn1"
 vim.opt.showmode = true
 vim.opt.updatetime = 100
-vim.wo.signcolumn = "no"
+vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.virtualedit = "block"
@@ -55,7 +55,6 @@ vim.cmd([[set cursorline]])
 vim.cmd([[set cursorcolumn]])
 
 vim.opt.conceallevel = 1
-
 vim.opt.termguicolors = true
 
 

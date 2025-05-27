@@ -3,9 +3,10 @@ decorations = "None"
 option_as_alt = "Both"
 
 [font]
-size = 18
+size = 16
 
 [font.normal]
+# family = "PxPlusIBMVGA8 Nerd Font"
 family = "Menlo Nerd Font"
 style = "Regular"
 
@@ -118,3 +119,9 @@ chars = "\u001b9"
 key = "0"
 mods = "Command"
 chars = "\u001b0"
+
+[colors.primary]
+background = '#000000'
+
+[cursor]
+style = "Underline"
