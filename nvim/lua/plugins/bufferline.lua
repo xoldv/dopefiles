@@ -28,8 +28,6 @@ return {
 			},
 		})
 
-		vim.opt.termguicolors = true
-
 		local function go_to_visual_buffer(n)
 			local buffers = bufferline.get_elements().elements
 			local target = buffers[n]
