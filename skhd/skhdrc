@@ -47,13 +47,13 @@ ctrl + cmd - d : yabai -m window --space prev && yabai -m space --focus prev && 
 ctrl + cmd - f : yabai -m window --space next && yabai -m space --focus next && yabai -m window --focus last
 
 # переместить окно на определенное рабочее пространство
-ctrl + alt - 1 : yabai -m window --space 1;
-ctrl + alt - 2 : yabai -m window --space 2;
-ctrl + alt - 3 : yabai -m window --space 3;
-ctrl + alt - 4 : yabai -m window --space 4;
-ctrl + alt - 5 : yabai -m window --space 5;
-ctrl + alt - 6 : yabai -m window --space 6;
-ctrl + alt - 7 : yabai -m window --space 7;
+ctrl + cmd - 1 : yabai -m window --space 1;
+ctrl + cmd - 2 : yabai -m window --space 2;
+ctrl + cmd - 3 : yabai -m window --space 3;
+ctrl + cmd - 4 : yabai -m window --space 4;
+ctrl + cmd - 5 : yabai -m window --space 5;
+ctrl + cmd - 6 : yabai -m window --space 6;
+ctrl + cmd - 7 : yabai -m window --space 7;
 
 # Переключение на следующее окно
 # cmd - tab : yabai -m window --focus last
