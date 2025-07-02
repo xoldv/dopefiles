@@ -1,15 +1,14 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons"
+		"nvim-tree/nvim-web-devicons",
 	},
 	event = "VeryLazy",
 	keys = {
 		{ "<leader>e", ":Neotree toggle left<CR>", silent = true, desc = "Float File Explorer" },
 		-- { "<leader><Tab>", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
-		-- { "<leader><Tab>", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
+		{ "<leader><Tab>", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
 	},
 	config = function()
 		require("neo-tree").setup({
@@ -19,6 +18,7 @@ return {
 			enable_modified_markers = true,
 			enable_diagnostics = true,
 			sort_case_insensitive = true,
+            tabs_max_width = 30,
 			default_component_configs = {
 
 				indent = {
@@ -51,7 +51,7 @@ return {
 			},
 			window = {
 				position = "float",
-				width = 25,
+				-- width = 25,
 			},
 			filesystem = {
 				commands = {
@@ -66,10 +66,16 @@ return {
 
 						vim.fn.jobstart({ "open", path }, { detach = true })
 					end,
+					fzf_live_grep = function(state)
+						local node = state.tree:get_node()
+						local path = node:get_id()
+						require("fzf-lua").live_grep({ cwd = path })
+					end,
 				},
 				window = {
 					mappings = {
 						["O"] = "open_in_finder", -- Добавляем клавишу O для открытия Finder
+						["Z"] = "fzf_live_grep", -- Search with fzf
 					},
 				},
 				use_libuv_file_watcher = true,
@@ -86,11 +92,10 @@ return {
 				},
 			},
 			source_selector = {
-				winbar = false,
+				winbar = true,
 				sources = {
-					{ source = "filesystem", display_name = " " },
-					-- { source = "buffers", display_name = "   Bufs " },
-					-- { source = "git_status", display_name = "   Git " },
+					{ source = "filesystem", display_name = "Files" },
+					{ source = "git_status", display_name = " Git " },
 				},
 			},
 			event_handlers = {
@@ -121,5 +126,15 @@ return {
 				-- },
 			},
 		})
+		local toggle_state = false
+
+		vim.keymap.set("n", "<leader>gf", function()
+			toggle_state = not toggle_state
+			if toggle_state then
+				vim.cmd("Neotree toggle left git_status")
+			else
+				vim.cmd("Neotree toggle left filesystem")
+			end
+		end, { desc = "Toggle Neo-tree git/files" })
 	end,
 }

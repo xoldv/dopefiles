@@ -5,8 +5,11 @@ return {
 		local fzf = require("fzf-lua")
 		fzf.setup({
 			winopts = {
-				border = "none",
-				fullscreen = true,
+				split = "belowright new",
+				height = 0.8,
+				width = 30,
+				border = "rounded",
+				fullscreen = false,
 				title_pos = "left",
 				treesitter = {
 					enabled = true,
@@ -15,10 +18,15 @@ return {
 			},
 			keymap = {
 				fzf = {
-					["tab"] = "down",
-					["shift-tab"] = "up",
+					-- ["tab"] = "down",
+					-- ["shift-tab"] = "up",
 				},
 			},
+    files = {
+      actions = {
+['default'] = require("fzf-lua.actions").file_edit_or_qf,
+      }
+    }
 		})
 
 		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "FZF Files" })
