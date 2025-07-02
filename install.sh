@@ -7,7 +7,6 @@ NC='\033[0m'
 function installing_func(){
     brew_installing
     oh_my_zsh_installing
-    powerlevel10k_installing
     brew_stuff_installing
     backup_nvim
     full_replacing_files
@@ -75,7 +74,7 @@ function brew_check_status(){
 
 function brew_stuff_installing(){
 
-    stuff=("neovim" "lf" "tmux" "eza" "yabai" "skhd" "fastfetch" "btop" "spicetify-cli")
+    stuff=("neovim" "lf" "tmux" "eza" "fastfetch" "alacritty")
     for brew_service in ${stuff[@]}; do
         brew_check_status "$(brew info "${brew_service}")" "$brew_service"
     done
