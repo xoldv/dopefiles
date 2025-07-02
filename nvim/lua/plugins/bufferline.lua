@@ -19,6 +19,10 @@ return {
 				indicator = { style = "none" },
 				buffer_close_icon = "",
 				close_icon = "",
+				insert_at_end = true,
+				insert_at_start = false,
+				-- автопереход на новый буфер
+				-- always_show_bufferline = true,
 			},
 			highlights = {
 				buffer_selected = {

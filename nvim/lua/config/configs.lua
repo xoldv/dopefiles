@@ -2,7 +2,7 @@ vim.g.did_load_filetypes = 1
 vim.g.formatoptions = "qrn1"
 vim.opt.showmode = true
 vim.opt.updatetime = 100
-vim.wo.signcolumn = "yes"
+-- vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.virtualedit = "block"
@@ -50,16 +50,18 @@ vim.opt.fillchars = {
 -- vim.opt.keymap = "russian-jcukenwin"
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,"
 	.. "фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+vim.opt.keymap = ""
+vim.opt.iminsert = 0
+vim.opt.imsearch = 0
 
 vim.cmd([[set cursorline]])
 vim.cmd([[set cursorcolumn]])
 
 vim.opt.conceallevel = 1
-vim.opt.termguicolors = true
-
+-- vim.opt.termguicolors = true
 
 function LspStatus()
-	local clients = vim.lsp.get_active_clients()
+	local clients = vim.lsp.get_clients()
 	if #clients == 0 then
 		return "LSP: Inactive"
 	end
@@ -69,4 +71,19 @@ function LspStatus()
 	end
 	return "LSP: " .. table.concat(names, ", ")
 end
+
 vim.o.statusline = "%f %y %m %= %l:%c [%p%%] %{v:lua.LspStatus()}"
+
+-- for nvim >>>>>v0.10.4
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "",
+		format = function(diagnostic)
+			return diagnostic.message
+		end,
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})

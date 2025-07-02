@@ -8,6 +8,7 @@ return {
 		{ "SmiteshP/nvim-navic" },
 		{ "jay-babu/mason-null-ls.nvim" },
 		{ "nvimtools/none-ls.nvim" },
+		{ "stevearc/conform.nvim" },
 	},
 
 	config = function()
@@ -40,14 +41,14 @@ return {
 		lspconfig.ts_ls.setup({})
 		lspconfig.intelephense.setup({})
 		require("mason-null-ls").setup({
-			ensure_installed = { "black", "stylua", "clang_format", "prettier" },
+			ensure_installed = { "ruff", "stylua", "clang_format", "prettier" },
 		})
 
 		local null_ls = require("null-ls")
 
 		null_ls.setup({
 			sources = {
-				null_ls.builtins.formatting.black,
+				-- null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.pretty_php,
@@ -62,5 +63,17 @@ return {
 				end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
 			end,
 		})
+		local conform = require("conform")
+		conform.setup({
+			formatters_by_ft = {
+				python = {
+					"ruff_fix", -- To fix lint errors. (ruff with argument --fix)
+					"ruff_format", -- To run the formatter. (ruff with argument format)
+				},
+			},
+		})
+		vim.keymap.set("n", "<leader>m", function()
+			conform.format()
+		end, { noremap = true, silent = true, desc = "Conform Format" })
 	end,
 }
