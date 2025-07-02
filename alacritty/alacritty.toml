@@ -1,5 +1,5 @@
 [window]
-decorations = "None" 
+# decorations = "None" 
 option_as_alt = "Both"
 
 [font]

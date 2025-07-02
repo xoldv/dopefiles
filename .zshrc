@@ -104,7 +104,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export EDITOR='vim'
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+
 alias n=nvim
+alias venv='. .venv/bin/activate'
+alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already exists" || echo "{\n  \"venvPath\": \".\",\n  \"venv\": \".venv\",\n  \"extraPaths\": [\"src\"]\n}" > pyrightconfig.json'
 
 source ~/gitstatus/gitstatus.prompt.zsh
 export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
