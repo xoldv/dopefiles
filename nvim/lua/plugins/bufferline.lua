@@ -2,6 +2,7 @@
 return {
 	"akinsho/bufferline.nvim",
 	event = "VeryLazy",
+    dependencies = { 'nvim-lua/plenary.nvim' },
 	config = function()
 		local bufferline = require("bufferline")
 		bufferline.setup({
@@ -48,6 +49,10 @@ return {
 		vim.keymap.set("n", "<A-0>", function()
 			go_to_visual_buffer(10)
 		end, { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>p", "<cmd>BufferLineTogglePin<CR>", { desc = "Pin/unpin buffer" })
+		vim.keymap.set("n", "<leader>X", ":BufferLineCloseRight<CR>")
+		vim.keymap.set("n", "<leader>s", ":BufferLineSortByTabs<CR>")
+		vim.keymap.set("n", "<leader>z", ":BufferLineCloseOthers<CR>")
 		vim.keymap.set("n", "<Leader>x", function()
 			vim.cmd("bdelete")
 		end, { noremap = true, silent = true })
