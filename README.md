@@ -8,7 +8,6 @@
 - Zsh config
 - Corne choc (42 keys) config
 - [lf](https://github.com/gokcehan/lf) config
-- [Yabai](https://github.com/koekeishiya/yabai) & [SKHD](https://github.com/koekeishiya/skhd) config
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch) config 
 ## Clean Setup (MacOS)
 ```bash
