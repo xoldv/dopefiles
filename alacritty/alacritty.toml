@@ -13,47 +13,47 @@ style = "Regular"
 # moving between tmux windows cmd+a, cmd+s, cmd+d etc..
 [[keyboard.bindings]]
 key = "A"
-mods = "Command"
+mods = "Alt"
 chars = "\u001ba"
 
 [[keyboard.bindings]]
 key = "S"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bs"
 
 [[keyboard.bindings]]
 key = "D"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bd"
 
 [[keyboard.bindings]]
 key = "F"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bf"
 
 [[keyboard.bindings]]
 key = "G"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bg"
 
 [[keyboard.bindings]]
 key = "Z"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bz"
 
 [[keyboard.bindings]]
 key = "X"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bx"
 
 [[keyboard.bindings]]
 key = "C"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bc"
 
 [[keyboard.bindings]]
 key = "V"
-mods = "Command"
+mods = "Alt"
 chars = "\u001bv"
 
 [selection]
@@ -125,3 +125,6 @@ background = '#000000'
 
 [cursor]
 style = "Underline"
+
+[env]
+TERM = "xterm-256color"
