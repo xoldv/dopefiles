@@ -106,6 +106,7 @@ export EDITOR='vim'
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 alias n=nvim
+alias lg=lazygit
 alias venv='. .venv/bin/activate'
 alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already exists" || echo "{\n  \"venvPath\": \".\",\n  \"venv\": \".venv\",\n  \"extraPaths\": [\"src\"]\n}" > pyrightconfig.json'
 
@@ -115,4 +116,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-
