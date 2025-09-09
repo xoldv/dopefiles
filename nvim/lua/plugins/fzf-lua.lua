@@ -22,11 +22,17 @@ return {
 					-- ["shift-tab"] = "up",
 				},
 			},
-    files = {
-      actions = {
-['default'] = require("fzf-lua.actions").file_edit_or_qf,
-      }
-    }
+			preview = {
+				hidden = true,
+			},
+			files = {
+				actions = {
+					["default"] = require("fzf-lua.actions").file_edit_or_qf,
+				},
+			},
+			grep = {
+				hidden = true,
+			},
 		})
 
 		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "FZF Files" })

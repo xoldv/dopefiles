@@ -24,6 +24,7 @@ vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>")
 vim.api.nvim_set_keymap("n", "gd", "<C-]>", { noremap = true, silent = true })
 
 -- fasting change name
-vim.keymap.set("n", "ms", "*:%s//")
+vim.keymap.set("n", "ms", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>rn", "*:%s//")
 
 vim.keymap.set('n', '<C-y>', '<C-d>', { noremap = true })

@@ -70,9 +70,6 @@ return {
 				})
 				-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 				-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-				-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#333852" })
-				-- vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#333852" })
 			end,
 		})
 		vim.g.gruvbox_material_background = "hard"
