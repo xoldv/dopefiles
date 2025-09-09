@@ -112,7 +112,3 @@ alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already ex
 
 source ~/gitstatus/gitstatus.prompt.zsh
 export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
