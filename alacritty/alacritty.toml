@@ -3,7 +3,7 @@
 option_as_alt = "Both"
 
 [font]
-size = 16
+size = 17
 
 [font.normal]
 # family = "PxPlusIBMVGA8 Nerd Font"
@@ -120,8 +120,8 @@ key = "0"
 mods = "Command"
 chars = "\u001b0"
 
-[colors.primary]
-background = '#000000'
+# [colors.primary]
+# background = '#000000'
 
 [cursor]
 style = "Underline"
