@@ -18,7 +18,7 @@ return {
 			enable_modified_markers = true,
 			enable_diagnostics = true,
 			sort_case_insensitive = true,
-            tabs_max_width = 30,
+			tabs_max_width = 30,
 			default_component_configs = {
 
 				indent = {
@@ -128,7 +128,7 @@ return {
 		})
 		local toggle_state = false
 
-		vim.keymap.set("n", "<leader>gf", function()
+		vim.keymap.set("n", "<leader>lg", function()
 			toggle_state = not toggle_state
 			if toggle_state then
 				vim.cmd("Neotree toggle left git_status")

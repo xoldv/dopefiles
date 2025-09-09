@@ -5,4 +5,3 @@ require("config.lazy")
 require("config.configs")
 -- -- KeyBindings
 require("config.mappings")
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
