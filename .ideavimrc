@@ -1,79 +1,76 @@
-"PLUGINS
-"nerdtree
-Plug 'preservim/nerdtree'
-let g:NERDTreeMapNewFile = "a"
-
-nmap <leader>e :NERDTree<CR>
-
-"autocomplete brackets, quotes etc.
-Plug 'tpope/vim-surround'
-
-"comments with gc, gcc
-Plug 'tpope/vim-commentary'
-
-"mini.ai
-set mini-ai
-
-"which-key
-set which-key
-set notimeout
-
-Plug 'easymotion/vim-easymotion'
-
-
-"CONFIG
-set number
-
-"copy and paste through system clipboard
-set clipboard=unnamed
-
-"add RUSSIAN
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-
-"results as you type
-set incsearch
-
-"what is mode in vim?
-set showmode
 let mapleader = " "
 
-"sounds off
+" PLUGINS
+" nerdtree
+Plug 'preservim/nerdtree'
+let g:NERDTreeMapNewFile = "a"
+" autocomplete brackets, quotes etc.
+Plug 'tpope/vim-surround'
+" comments with gc, gcc
+Plug 'tpope/vim-commentary'
+" mini.ai
+set mini-ai
+" which-key
+set which-key
+set notimeout
+" highlight copied text
+Plug 'machakann/vim-highlightedyank'
+
+
+" CONFIG
+set number
+" copy and paste through system clipboard
+set clipboard=unnamed
+" add RUSSIAN
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+" results as you type
+set incsearch
+" what is mode in vim?
+set showmode
+" sounds off
 set noerrorbells
 set visualbell
 
 
-
-"MAPPINGS
-"find files
+" MAPPINGS
+" find files
 map <leader>ff <Action>(GotoFile)
-
-"find in files
+" find in files
 map <leader>fw <Action>(FindInPath)
-
-"fast moving
+" fast moving
 map <C-y> <C-d>
-
-"go to realization
+" LSP
 map gD <Action>(GotoTypeDeclaration)
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
 map gr <Action>(GotoDeclaration)
-
-"save file
+imap <C-s> <Action>(ParameterInfo)
+map <C-s> <Action>(ParameterInfo)
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+" save file
 nmap <leader>w :action SaveDocument<CR>
-
-"horizontal split
+" horizontal split
 nmap <leader>- :split<CR>
-
-"vertical split
+" vertical split
 nmap <leader>_ :vsplit<CR>
-
-"move through split
+" move through split
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-
-"rename the selected symbol and correct all references
+" format code with ruff
+nmap <leader>m :action Tool_External Tools_ruff-format<CR>
+" optimize imports and reformat code
+map <leader>oa <Action>(ReformatCode)<Action>(OptimizeImports)
+" rename the selected symbol and correct all references
 nnoremap ms :action RenameElement<CR>
 nnoremap <leader>rn *:%s//
+" nerdtree
+map <leader>e <Action>(ActivateProjectToolWindow)
+" GIT
+nmap <leader>lg <Action>(LazyGit.Open)
+map <leader>gg <Action>(CheckinProject)
+map <leader>ga <Action>(Annotate)
+" TESTS
+map <leader>tt <Action>(RunClass)
