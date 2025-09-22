@@ -112,3 +112,4 @@ alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already ex
 
 source ~/gitstatus/gitstatus.prompt.zsh
 export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
