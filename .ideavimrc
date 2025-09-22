@@ -23,8 +23,8 @@ set number
 set clipboard=unnamed
 " add RUSSIAN
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-" results as you type
-set incsearch
+" highlight searched text
+set hlsearch
 " what is mode in vim?
 set showmode
 " sounds off
@@ -74,3 +74,5 @@ map <leader>gg <Action>(CheckinProject)
 map <leader>ga <Action>(Annotate)
 " TESTS
 map <leader>tt <Action>(RunClass)
+" clear search
+nmap <leader>h :nohlsearch<CR>
