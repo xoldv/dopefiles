@@ -15,6 +15,8 @@ set which-key
 set notimeout
 " highlight copied text
 Plug 'machakann/vim-highlightedyank'
+" easymotions
+set easymotion
 
 
 " CONFIG
@@ -76,3 +78,13 @@ map <leader>ga <Action>(Annotate)
 map <leader>tt <Action>(RunClass)
 " clear search
 nmap <leader>h :nohlsearch<CR>
+" EASYMOTIONS
+map <leader><leader> <plug>(easymotion-s)
+map ;b <Plug>(easymotion-b)
+map ;w <Plug>(easymotion-w)
+map ;a <Plug>(easymotion-e)
+map ;c <Plug>(easymotion-s)
+map ;d <Plug>(easymotion-lineforward)
+map ;f <Plug>(easymotion-w)
+map ;s <Plug>(easymotion-s)
+map ;j <Plug>(easymotion-j)
