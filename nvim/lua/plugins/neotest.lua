@@ -30,5 +30,8 @@ return {
 		vim.keymap.set("n", "<leader>to", function()
 			neotest.output_panel.toggle()
 		end, { desc = "Toggle output panel" })
+		vim.keymap.set("n", "<leader>td", function()
+			neotest.run.run({ strategy = "dap" })
+		end, { desc = "Run nearest test in debug" })
 	end,
 }
