@@ -102,16 +102,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export EDITOR='vim'
+source ~/gitstatus/gitstatus.prompt.zsh
+
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export EDITOR='vim'
 
 alias n=nvim
 alias lg=lazygit
 alias venv='. .venv/bin/activate'
 alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already exists" || echo "{\n  \"venvPath\": \".\",\n  \"venv\": \".venv\",\n  \"extraPaths\": [\"src\"]\n}" > pyrightconfig.json'
 
-source ~/gitstatus/gitstatus.prompt.zsh
-export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 clear
 fastfetch
