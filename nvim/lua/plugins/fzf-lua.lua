@@ -3,6 +3,10 @@ return {
 	opts = {},
 	config = function()
 		local fzf = require("fzf-lua")
+
+		local last_files_query = ""
+		local last_grep_query = ""
+
 		fzf.setup({
 			winopts = {
 				split = "belowright new",
@@ -11,37 +15,41 @@ return {
 				border = "rounded",
 				fullscreen = false,
 				title_pos = "left",
-				treesitter = {
-					enabled = true,
-					fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
-				},
-			},
-			keymap = {
-				fzf = {
-					-- ["tab"] = "down",
-					-- ["shift-tab"] = "up",
-				},
-			},
-			preview = {
-				hidden = true,
 			},
 			files = {
-				actions = {
-					["default"] = require("fzf-lua.actions").file_edit_or_qf,
+				fzf_opts = {
+					["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-files-history",
 				},
 			},
 			grep = {
-				hidden = true,
+				fzf_opts = {
+					["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-grep-history",
+				},
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "FZF Files" })
-		vim.keymap.set("n", "<leader>fw", fzf.live_grep, { desc = "FZF Live Grep" })
-		vim.keymap.set("n", "<leader>fb", fzf.buffers, {})
-		vim.keymap.set("n", "<leader>fh", fzf.help_tags, {})
-		vim.keymap.set("n", "<leader>gb", fzf.git_branches, {})
-		vim.keymap.set("n", "<leader>gc", fzf.git_commits, {})
-		vim.keymap.set("n", "<leader>gs", fzf.git_status, {})
-		vim.keymap.set("n", "<leader>ls", fzf.lsp_document_symbols, {})
+		vim.keymap.set("n", "<leader>ff", function()
+			fzf.files({
+				query = last_files_query,
+				actions = {
+					["default"] = function(selected, opts)
+						last_files_query = opts.query or ""
+						require("fzf-lua.actions").file_edit_or_qf(selected, opts)
+					end,
+				},
+			})
+		end, { desc = "FZF Files" })
+
+		vim.keymap.set("n", "<leader>fw", function()
+			fzf.live_grep({
+				query = last_grep_query,
+				actions = {
+					["default"] = function(selected, opts)
+						last_grep_query = opts.query or ""
+						require("fzf-lua.actions").file_edit_or_qf(selected, opts)
+					end,
+				},
+			})
+		end, { desc = "FZF Live Grep" })
 	end,
 }
