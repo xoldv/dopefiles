@@ -51,5 +51,15 @@ return {
 				},
 			})
 		end, { desc = "FZF Live Grep" })
+			-- ... другие настройки ...
+
+			-- Find usages через fzf-lua
+        vim.keymap.set(
+            "n",
+            "<leader>fiu",
+            '<cmd>lua require("fzf-lua").lsp_references()<cr>',
+            { desc = "Find Usages" }
+        )
+
 	end,
 }

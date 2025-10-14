@@ -37,6 +37,8 @@ return {
 					vim.lsp.buf.format({ async = true })
 				end, { noremap = true, silent = true, buffer = bufnr, desc = "Format Code" })
 			end,
+
+			vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" }),
 		})
 	end,
 }
