@@ -39,6 +39,7 @@ return {
 			end,
 
 			vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" }),
+			vim.keymap.set("n", "<A-Enter>", vim.lsp.buf.code_action, { desc = "LSP Code Action" }),
 		})
 	end,
 }
