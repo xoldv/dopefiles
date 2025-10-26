@@ -115,26 +115,7 @@ return {
 						end
 					end,
 				},
-				-- {
-				--   event = "file_open_requested",
-				--   handler = function()
-				--     -- auto close
-				--     -- vim.cmd("Neotree close")
-				--     -- OR
-				--     require("neo-tree.command").execute({ action = "close" })
-				--   end
-				-- },
 			},
 		})
-		local toggle_state = false
-
-		vim.keymap.set("n", "<leader>lg", function()
-			toggle_state = not toggle_state
-			if toggle_state then
-				vim.cmd("Neotree toggle left git_status")
-			else
-				vim.cmd("Neotree toggle left filesystem")
-			end
-		end, { desc = "Toggle Neo-tree git/files" })
 	end,
 }
