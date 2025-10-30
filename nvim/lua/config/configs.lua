@@ -1,8 +1,7 @@
-vim.g.did_load_filetypes = 1
-vim.g.formatoptions = "qrn1"
+vim.opt.guicursor = ""
+
 vim.opt.showmode = true
 vim.opt.updatetime = 100
--- vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.virtualedit = "block"
@@ -16,6 +15,7 @@ vim.opt.mousefocus = true
 -- Line Numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "120"
 
 -- Splits
 vim.opt.splitbelow = true
@@ -34,18 +34,10 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.smartindent = true
 
--- Fillchars
-vim.opt.fillchars = {
-	vert = "│",
-	fold = "⠀",
-	-- eob = " ", -- suppress ~ at EndOfBuffer
-	-- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
-	msgsep = "‾",
-	foldopen = "▾",
-	foldsep = "│",
-	foldclose = "▸",
-}
+vim.opt.swapfile = false
+vim.opt.backup = false
 
+vim.g.formatoptions = "qrn1"
 -- RUSSIAN VODKAAA
 -- vim.opt.keymap = "russian-jcukenwin"
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,"
@@ -58,7 +50,7 @@ vim.cmd([[set cursorline]])
 vim.cmd([[set cursorcolumn]])
 
 vim.opt.conceallevel = 1
--- vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 
 function LspStatus()
 	local clients = vim.lsp.get_clients()
