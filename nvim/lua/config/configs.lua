@@ -1,5 +1,3 @@
-vim.opt.guicursor = ""
-
 vim.opt.showmode = true
 vim.opt.updatetime = 100
 vim.opt.scrolloff = 8
