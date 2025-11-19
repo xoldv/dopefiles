@@ -62,7 +62,22 @@ function LspStatus()
 	return "LSP: " .. table.concat(names, ", ")
 end
 
-vim.o.statusline = "%f %y %m %= %l:%c [%p%%] %{v:lua.LspStatus()}"
+local base_statusline = "%f %y %m %= %l:%c [%p%%] %{v:lua.LspStatus()}"
+local inactive_statusline = "%#Comment# " .. base_statusline .. "%#Normal#"
+
+vim.o.statusline = base_statusline
+
+vim.api.nvim_create_autocmd("WinEnter", {
+	callback = function()
+		vim.wo.statusline = base_statusline
+	end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+	callback = function()
+		vim.wo.statusline = inactive_statusline
+	end,
+})
 
 -- for nvim >>>>>v0.10.4
 vim.diagnostic.config({
