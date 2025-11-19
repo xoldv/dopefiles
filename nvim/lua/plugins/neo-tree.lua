@@ -6,9 +6,7 @@ return {
 	},
 	event = "VeryLazy",
 	keys = {
-		{ "<leader>e", ":Neotree toggle left<CR>", silent = true, desc = "Float File Explorer" },
-		-- { "<leader><Tab>", ":Neotree toggle left<CR>", silent = true, desc = "Left File Explorer" },
-		{ "<leader><Tab>", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
+		{ "<leader>e", ":Neotree toggle reveal<CR>", silent = false, desc = "Folat File Explorer" },
 	},
 	config = function()
 		require("neo-tree").setup({
@@ -108,16 +106,10 @@ return {
 
 						vim.fn.jobstart({ "open", path }, { detach = true })
 					end,
-					fzf_live_grep = function(state)
-						local node = state.tree:get_node()
-						local path = node:get_id()
-						require("fzf-lua").live_grep({ cwd = path })
-					end,
 				},
 				window = {
 					mappings = {
-						["O"] = "open_in_finder", -- Добавляем клавишу O для открытия Finder
-						["Z"] = "fzf_live_grep", -- Search with fzf
+						["O"] = "open_in_finder",
 					},
 				},
 				use_libuv_file_watcher = true,
@@ -130,7 +122,6 @@ return {
 				},
 				never_show = {
 					".DS_Store",
-					"thumbs.db",
 				},
 			},
 			source_selector = {
