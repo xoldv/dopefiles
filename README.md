@@ -1,4 +1,4 @@
-![MacOS Setup=)](.README-photos/Setup.png)
+![MacOS Setup=)](assets/workflow.png)
 # 507015t(soloist) dotfiles🎃
 ## Contents
 - Vim (Neovim) config
@@ -15,7 +15,7 @@ cd && git clone https://github.com/507015T/dopefiles.git && ~/dopefiles/install.
 ```
 
 ## Split keyboard ( Corne choc )
-![keyboard layer 0](.README-photos/keyboard-layer0.png)
-![keyboard layer 1](.README-photos/keyboard-layer1.png)
-![keyboard layer 2](.README-photos/keyboard-layer2.png)
-![keyboard layer 3](.README-photos/keyboard-layer3.png)
+![keyboard layer 0](assets/corne-layer0.png)
+![keyboard layer 1](assets/corne-layer1.png)
+![keyboard layer 2](assets/corne-layer2.png)
+![keyboard layer 3](assets/corne-layer3.png)
