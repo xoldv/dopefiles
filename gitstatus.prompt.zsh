@@ -53,15 +53,15 @@ function gitstatus_prompt_update() {
   p+="${green}${where//\%/%%}"             # escape %
 
   # ⇣42 if behind the remote.
-  (( VCS_STATUS_COMMITS_BEHIND )) && p+=" ${green}⇣${VCS_STATUS_COMMITS_BEHIND}"
+  (( VCS_STATUS_COMMITS_BEHIND )) && p+=" ${green}⇣ ${VCS_STATUS_COMMITS_BEHIND}"
   # ⇡42 if ahead of the remote; no leading space if also behind the remote: ⇣42⇡42.
   (( VCS_STATUS_COMMITS_AHEAD && !VCS_STATUS_COMMITS_BEHIND )) && p+=" "
-  (( VCS_STATUS_COMMITS_AHEAD  )) && p+="${green}⇡${VCS_STATUS_COMMITS_AHEAD}"
+  (( VCS_STATUS_COMMITS_AHEAD  )) && p+="${green}⇡ ${VCS_STATUS_COMMITS_AHEAD}"
   # ⇠42 if behind the push remote.
-  (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p+=" ${green}⇠${VCS_STATUS_PUSH_COMMITS_BEHIND}"
+  (( VCS_STATUS_PUSH_COMMITS_BEHIND )) && p+=" ${green}⇠ ${VCS_STATUS_PUSH_COMMITS_BEHIND}"
   (( VCS_STATUS_PUSH_COMMITS_AHEAD && !VCS_STATUS_PUSH_COMMITS_BEHIND )) && p+=" "
   # ⇢42 if ahead of the push remote; no leading space if also behind: ⇠42⇢42.
-  (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p+="${green}⇢${VCS_STATUS_PUSH_COMMITS_AHEAD}"
+  (( VCS_STATUS_PUSH_COMMITS_AHEAD  )) && p+="${green}⇢ ${VCS_STATUS_PUSH_COMMITS_AHEAD}"
   # *42 if have stashes.
   (( VCS_STATUS_STASHES        )) && p+=" ${green}*${VCS_STATUS_STASHES}"
   # 'merge' if the repo is in an unusual state.
