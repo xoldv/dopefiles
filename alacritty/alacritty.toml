@@ -1,13 +1,15 @@
 [window]
-# decorations = "None" 
+decorations = "buttonless"
 option_as_alt = "Both"
+opacity = 0.9
 
 [font]
-size = 15
+size = 17
 
 [font.normal]
 # family = "PxPlusIBMVGA8 Nerd Font"
-family = "Menlo Nerd Font"
+# family = "Menlo Nerd Font"
+family = "Iosevka Nerd Font"
 style = "Regular"
 
 # moving between tmux windows cmd+a, cmd+s, cmd+d etc..
@@ -120,8 +122,8 @@ key = "0"
 mods = "Command"
 chars = "\u001b0"
 
-# [colors.primary]
-# background = '#000000'
+[colors.primary]
+background = '#000000'
 
 [cursor]
 style = "Underline"
