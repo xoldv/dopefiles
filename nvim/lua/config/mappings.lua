@@ -4,6 +4,10 @@
 -- vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 -- vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 vim.keymap.set({"n", "x", "v"}, "<C-y>", "<C-d>", { noremap = true })
+vim.keymap.set("n", "<M-,>", "<C-w>5<")
+vim.keymap.set("n", "<M-.>", "<C-w>5>")
+vim.keymap.set("n", "<M-m>", "<C-w>-")
+vim.keymap.set("n", "<M-n>", "<C-w>+")
 -- fast moving text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
