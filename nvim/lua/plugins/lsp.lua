@@ -24,6 +24,13 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+				json = { "jq" },
+			},
+			formatters = {
+				jq = {
+					command = "jq",
+					args = {"-S", "--indent", "2", "--ascii-output", "." },
+				},
 			},
 		})
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
