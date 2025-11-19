@@ -52,7 +52,10 @@ return {
 					bg = "#454545",
 				})
 
-				vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#2a2a2a" }) -- фон
+				vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#2a2a2a" })
+
+				vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+				vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 			end,
 		})
 		vim.cmd.colorscheme("ilyasyoy")
