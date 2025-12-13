@@ -115,4 +115,6 @@ alias venv='. .venv/bin/activate'
 alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already exists" || echo "{\n  \"venvPath\": \".\",\n  \"venv\": \".venv\",\n  \"extraPaths\": [\"src\"]\n}" > pyrightconfig.json'
 alias lint='ruff check --fix --unsafe-fixes src/; 2>/dev/null 1>&2 ruff check --fix --unsafe-fixes app/; ruff check --fix --unsafe-fixes tests/; ruff format .'
 clear
+alias t='~/tmux-sessionizer'
+bindkey -s '^T' '~/tmux-sessionizer\n'
 fastfetch
