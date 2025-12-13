@@ -6,7 +6,21 @@ return {
 
 		local last_files_query = ""
 		local last_grep_query = ""
-
+		local grep_opts = {
+			"rg",
+			"--vimgrep",
+			"--hidden",
+			"--follow",
+			"--glob",
+			'"!**/.git/*"',
+			"--column",
+			"--line-number",
+			"--no-heading",
+			"--color=always",
+			"--smart-case",
+			"--max-columns=4096",
+			"-e",
+		}
 		fzf.setup({
 			winopts = {
 				split = "belowright new",
@@ -25,6 +39,7 @@ return {
 				fzf_opts = {
 					["--history"] = vim.fn.stdpath("data") .. "/fzf-lua-grep-history",
 				},
+				cmd = table.concat(grep_opts, " "),
 			},
 		})
 
@@ -43,6 +58,7 @@ return {
 		vim.keymap.set("n", "<leader>fw", function()
 			fzf.live_grep({
 				query = last_grep_query,
+				rg_opts = "--hidden --no-ignore --no-ignore-vcs --column --line-number --no-heading --color=always --smart-case -- ''",
 				actions = {
 					["default"] = function(selected, opts)
 						last_grep_query = opts.query or ""
@@ -51,15 +67,7 @@ return {
 				},
 			})
 		end, { desc = "FZF Live Grep" })
-			-- ... другие настройки ...
-
-			-- Find usages через fzf-lua
-        vim.keymap.set(
-            "n",
-            "<leader>fiu",
-            '<cmd>lua require("fzf-lua").lsp_references()<cr>',
-            { desc = "Find Usages" }
-        )
-
+		vim.keymap.set("n", "<leader>fiu", '<cmd>lua require("fzf-lua").lsp_references()<cr>', { desc = "Find Usages" })
+		vim.keymap.set("n", "<leader>fg", '<cmd>lua require("fzf-lua").git_status()<cr>', { desc = "Find Git" })
 	end,
 }
