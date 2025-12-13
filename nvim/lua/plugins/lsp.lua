@@ -25,11 +25,13 @@ return {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 				json = { "jq" },
+				bash = { "shfmt" },
+				sh = { "shfmt" },
 			},
 			formatters = {
 				jq = {
 					command = "jq",
-					args = {"-S", "--indent", "2", "--ascii-output", "." },
+					args = { "-S", "--indent", "2", "--ascii-output", "." },
 				},
 			},
 		})
@@ -94,17 +96,28 @@ return {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 		})
-
 		vim.lsp.config("lua_ls", { capabilities = capabilities })
 		vim.lsp.config("basedpyright", { capabilities = capabilities })
 		-- vim.lsp.config("pyright", { capabilities = capabilities })
 		vim.lsp.config("emmet_language_server", { capabilities = capabilities })
 		vim.lsp.config("clangd", { capabilities = capabilities })
+		vim.lsp.config("bash_language_server", {
+			cmd = { "bash-language-server", "start" },
+			filetypes = { "sh" },
+			capabilities = capabilities,
+		})
+		vim.lsp.config("tsserver", {
+			capabilities = capabilities,
+			cmd = { "typescript-language-server", "--stdio" },
+			filetypes = { "javascript", "typescript", "css", "html" },
+		})
 
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("basedpyright")
 		vim.lsp.enable("emmet_language_server")
 		vim.lsp.enable("clangd")
+		vim.lsp.enable("bash_language_server")
+		vim.lsp.enable("tsserver")
 
 		vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" })
 		vim.keymap.set("n", "<A-Enter>", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
