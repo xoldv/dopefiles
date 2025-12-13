@@ -6,9 +6,14 @@ return {
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
 			"nvim-neotest/nvim-nio",
-			"williamboman/mason.nvim",
+			"Weissle/persistent-breakpoints.nvim",
 		},
 		config = function()
+			require("persistent-breakpoints").setup({
+				load_breakpoints_event = { "BufReadPost" },
+			})
+
+			require("persistent-breakpoints.api").load_breakpoints()
 			local dap = require("dap")
 			local ui = require("dapui")
 			ui.setup()
@@ -35,11 +40,10 @@ return {
 				-- 	return " " .. variable.value
 				-- end,
 			})
-			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
+			vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
 
 			-- Eval var under cursor
-			vim.keymap.set("n", "<space>?", function()
+			vim.keymap.set("n", "<leader>?", function()
 				require("dapui").eval(nil, { enter = true })
 			end)
 
@@ -48,10 +52,16 @@ return {
 			vim.keymap.set("n", "<F3>", dap.step_over)
 			vim.keymap.set("n", "<F4>", dap.step_out)
 			vim.keymap.set("n", "<F5>", dap.step_back)
-			vim.keymap.set("n", "<F13>", dap.restart)
+			vim.keymap.set("n", "<F6>", dap.restart)
 
 			vim.keymap.set("n", "<leader>dq", close_debugger, { desc = "Close DAP UI and terminate debug session" })
 
+			vim.keymap.set(
+				"n",
+				"<leader>b",
+				"<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
+				{ noremap = true, silent = true }
+			)
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
 			end
