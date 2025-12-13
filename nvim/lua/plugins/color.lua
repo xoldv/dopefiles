@@ -56,6 +56,14 @@ return {
 
 				vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 				vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+				vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#689d6a" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#c2a300" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#670001" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitRenamed", { fg = "#c2a300" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitIgnored", { fg = "#6c7086" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { fg = "#518199" })
+				vim.api.nvim_set_hl(0, "NeoTreeGitConflict", { fg = "#d787ff" })
 			end,
 		})
 		vim.cmd.colorscheme("ilyasyoy")
