@@ -32,11 +32,9 @@ return {
 			neotest.output_panel.toggle()
 		end, { desc = "Toggle output panel" })
 		vim.keymap.set("n", "<leader>td", function()
-			require("persistent-breakpoints.api").reload_breakpoints()
 			neotest.run.run({ strategy = "dap" })
 		end, { desc = "Run nearest test in debug" })
 		vim.keymap.set("n", "<leader>tD", function()
-			require("persistent-breakpoints.api").reload_breakpoints()
 			neotest.run.run({ file = vim.fn.expand("%"), strategy = "dap" })
 		end, { desc = "Run current test file in debug" })
 	end,
