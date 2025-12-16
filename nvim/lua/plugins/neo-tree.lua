@@ -7,6 +7,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{ "<leader>e", ":Neotree toggle reveal<CR>", silent = false, desc = "Folat File Explorer" },
+		{ "<leader>le", ":Neotree toggle git_status<CR>", silent = false, desc = "Git Status File Explorer" },
 	},
 	config = function()
 		require("neo-tree").setup({
@@ -128,7 +129,6 @@ return {
 				winbar = true,
 				sources = {
 					{ source = "filesystem", display_name = "Files" },
-					{ source = "git_status", display_name = " Git " },
 				},
 			},
 			event_handlers = {
