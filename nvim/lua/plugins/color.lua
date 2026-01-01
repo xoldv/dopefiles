@@ -38,6 +38,9 @@ return {
 						fg = color.fg,
 					})
 				end
+
+				vim.api.nvim_set_hl(0, "StatuslineError", diagnostic_colors.Error)
+				vim.api.nvim_set_hl(0, "StatuslineWarn", diagnostic_colors.Warn)
 				-- brackets
 				vim.api.nvim_set_hl(0, "MatchParen", { fg = "#fc9487", bg = "#cc241d", bold = true })
 				-- for illuminate plugun
