@@ -4,12 +4,12 @@ option_as_alt = "Both"
 opacity = 0.9
 
 [font]
-size = 18
+size = 20
 
 [font.normal]
-# family = "PxPlusIBMVGA8 Nerd Font"
 # family = "Menlo Nerd Font"
-family = "Iosevka Nerd Font"
+# family = "Iosevka Nerd Font"
+family = "PlemolJP Console NF"
 style = "Regular"
 
 # moving between tmux windows cmd+a, cmd+s, cmd+d etc..

@@ -1,3 +1,3 @@
-[submodule "font"]
-	path = font
-	url = https://github.com/507015T/menlo-nerd-font.git
+[submodule "fonts/menlo-nerd-font"]
+	path = fonts/menlo-nerd-font
+	url = https://github.com/xoldv/menlo-nerd-font.git
