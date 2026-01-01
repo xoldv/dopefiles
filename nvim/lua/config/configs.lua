@@ -50,19 +50,31 @@ vim.cmd([[set cursorcolumn]])
 vim.opt.conceallevel = 1
 vim.opt.termguicolors = true
 
-function LspStatus()
-	local clients = vim.lsp.get_clients()
-	if #clients == 0 then
-		return "LSP: Inactive"
+function _G.DiagnosticsCount()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local diags = vim.diagnostic.get(bufnr)
+
+	local e, w = 0, 0
+	for _, d in ipairs(diags) do
+		if d.severity == vim.diagnostic.severity.ERROR then
+			e = e + 1
+		elseif d.severity == vim.diagnostic.severity.WARN then
+			w = w + 1
+		end
 	end
-	local names = {}
-	for _, client in ipairs(clients) do
-		table.insert(names, client.name)
+
+	local parts = {}
+	if e > 0 then
+		table.insert(parts, "%#StatuslineError#" .. e)
 	end
-	return "LSP: " .. table.concat(names, ", ")
+	if w > 0 then
+		table.insert(parts, "%#StatuslineWarn#" .. w)
+	end
+
+    return table.concat(parts, "%#StatusLine#|") .. "%#StatusLine#"
 end
 
-local base_statusline = "%f %y %m %= %l:%c [%p%%] %{v:lua.LspStatus()}"
+local base_statusline = "%f %y %m %= %{%v:lua.DiagnosticsCount()%} %l:%c [%p%%]"
 local inactive_statusline = "%#Comment# " .. base_statusline .. "%#Normal#"
 
 vim.o.statusline = base_statusline
