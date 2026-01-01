@@ -96,11 +96,32 @@ return {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 		})
-		vim.lsp.config("lua_ls", { capabilities = capabilities })
 		vim.lsp.config("basedpyright", { capabilities = capabilities })
 		-- vim.lsp.config("pyright", { capabilities = capabilities })
 		vim.lsp.config("emmet_language_server", { capabilities = capabilities })
 		vim.lsp.config("clangd", { capabilities = capabilities })
+		vim.lsp.config("lua_ls", {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					runtime = {
+						version = "LuaJIT",
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = {
+							vim.env.VIMRUNTIME,
+						},
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
+					},
+				},
+			},
+		})
 		vim.lsp.config("bash_language_server", {
 			cmd = { "bash-language-server", "start" },
 			filetypes = { "sh" },
