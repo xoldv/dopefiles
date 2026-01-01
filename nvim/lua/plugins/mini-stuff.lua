@@ -14,6 +14,13 @@ return {
 		end,
 	},
 	{
+		"nvim-mini/mini.pairs",
+		version = false,
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+	{
 		-- which key
 		"nvim-mini/mini.clue",
 		version = false,
