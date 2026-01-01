@@ -14,6 +14,13 @@ return {
 		end,
 	},
 	{
+		"nvim-mini/mini.indentscope",
+		version = false,
+		config = function()
+			require("mini.indentscope").setup()
+		end,
+	},
+	{
 		"nvim-mini/mini.pairs",
 		version = false,
 		config = function()
