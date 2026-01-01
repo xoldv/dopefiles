@@ -1,8 +1,18 @@
 return {
 	"ibhagwan/fzf-lua",
-	opts = {},
+	opts = {
+		oldfiles = {
+			include_current_session = true,
+		},
+		previewers = {
+			builtin = {
+				syntax_limit_b = 1024 * 100, -- 100KB
+			},
+		},
+	},
 	config = function()
 		local fzf = require("fzf-lua")
+		local fzf_actions = require("fzf-lua.actions")
 
 		local last_files_query = ""
 		local last_grep_query = ""
@@ -41,15 +51,24 @@ return {
 				},
 				cmd = table.concat(grep_opts, " "),
 			},
+			keymap = {
+				fzf = {
+					["ctrl-q"] = "select-all+accept",
+				},
+			},
 		})
+		fzf.register_ui_select()
 
 		vim.keymap.set("n", "<leader>ff", function()
 			fzf.files({
 				query = last_files_query,
+				opts = {
+					["--bind"] = "start:clear-query",
+				},
 				actions = {
 					["default"] = function(selected, opts)
 						last_files_query = opts.query or ""
-						require("fzf-lua.actions").file_edit_or_qf(selected, opts)
+						fzf_actions.file_edit_or_qf(selected, opts)
 					end,
 				},
 			})
@@ -62,12 +81,14 @@ return {
 				actions = {
 					["default"] = function(selected, opts)
 						last_grep_query = opts.query or ""
-						require("fzf-lua.actions").file_edit_or_qf(selected, opts)
+						fzf_actions.file_edit_or_qf(selected, opts)
 					end,
 				},
 			})
 		end, { desc = "FZF Live Grep" })
-		vim.keymap.set("n", "<leader>fiu", '<cmd>lua require("fzf-lua").lsp_references()<cr>', { desc = "Find Usages" })
-		vim.keymap.set("n", "<leader>fg", '<cmd>lua require("fzf-lua").git_status()<cr>', { desc = "Find Git" })
+		vim.keymap.set("n", "<leader>fiu", fzf.lsp_references, { desc = "Find Usages" })
+		vim.keymap.set("n", "<leader>fg", fzf.git_status, { desc = "Find Git" })
+		vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find Buffers" })
+		vim.keymap.set("n", "<leader>fh", fzf.helptags, { desc = "Find Buffers" })
 	end,
 }
