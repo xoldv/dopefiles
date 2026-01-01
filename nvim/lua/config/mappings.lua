@@ -3,7 +3,7 @@
 -- vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 -- vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 -- vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
-vim.keymap.set({"n", "x", "v"}, "<C-y>", "<C-d>", { noremap = true })
+vim.keymap.set({ "n", "x", "v" }, "<C-y>", "<C-d>", { noremap = true })
 vim.keymap.set("n", "<M-,>", "<C-w>5<")
 vim.keymap.set("n", "<M-.>", "<C-w>5>")
 vim.keymap.set("n", "<M-m>", "<C-w>-")
@@ -28,12 +28,11 @@ vim.api.nvim_set_keymap("n", "gd", "<C-]>", { noremap = true, silent = true })
 vim.keymap.set("n", "ms", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>rn", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-
-vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
+vim.keymap.set("n", "<leader>rl", "<cmd>LspRestart<cr>")
 -- It pastes over selected text without overwriting the clipboard.
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- delete without overwriting the clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -42,7 +41,11 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.goto_next()
+end, opts)
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.goto_prev()
+end, opts)
 
 vim.keymap.set("n", "<leader>du", require("config.find_usages").delete_if_unused, { desc = "Delete if unused" })
