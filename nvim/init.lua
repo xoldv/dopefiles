@@ -2,6 +2,6 @@ vim.loader.enable()
 -- LazyVim
 require("config.lazy")
 -- Nvim Settings
-require("config.configs")
+require("config.config")
 -- -- KeyBindings
 require("config.mappings")
