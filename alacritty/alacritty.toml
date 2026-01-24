@@ -1,10 +1,12 @@
 [window]
-decorations = "buttonless"
+# decorations = "buttonless"
+decorations = "full"
 option_as_alt = "Both"
 opacity = 0.9
+# startup_mode = "Maximized"
 
 [font]
-size = 20
+size = 19
 
 [font.normal]
 # family = "Menlo Nerd Font"
