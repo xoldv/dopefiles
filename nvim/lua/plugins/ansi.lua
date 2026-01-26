@@ -3,7 +3,7 @@ return {
 	config = function()
 		require("ansi").setup({
 			auto_enable = true, -- Auto-enable for configured filetypes
-			filetypes = { "log", "ansi", 'dap-repl' }, -- Filetypes to auto-enable
+			filetypes = { "log", "ansi", 'dap-repl', 'neotest-output-panel' }, -- Filetypes to auto-enable
 		})
 	end,
 }
