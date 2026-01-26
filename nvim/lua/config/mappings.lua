@@ -49,3 +49,4 @@ vim.keymap.set("n", "[d", function()
 end, opts)
 
 vim.keymap.set("n", "<leader>du", require("config.find_usages").delete_if_unused, { desc = "Delete if unused" })
+vim.keymap.set("n", "*", "*N", { noremap = true, silent = true })
