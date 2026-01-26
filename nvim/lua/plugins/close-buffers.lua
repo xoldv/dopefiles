@@ -1,20 +1,15 @@
 return {
 	"kazhala/close-buffers.nvim",
 	event = "VeryLazy",
-	keys = {
-		{
-			"<leader>th",
-			function()
-				require("close_buffers").delete({ type = "hidden" })
-			end,
-			"Close Hidden Buffers",
-		},
-		{
-			"<leader>tu",
-			function()
-				require("close_buffers").delete({ type = "nameless" })
-			end,
-			"Close Nameless Buffers",
-		},
-	},
+	config = function()
+		local close_buffers = require("close_buffers")
+
+		vim.keymap.set("n", "<leader>th", function()
+			close_buffers.delete({ type = "hidden" })
+		end, { desc = "Close Hidden Buffers" })
+
+		vim.keymap.set("n", "<leader>tu", function()
+			close_buffers.delete({ type = "nameless" })
+		end, { desc = "Close Nameless Buffers" })
+	end,
 }
