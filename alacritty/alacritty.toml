@@ -14,10 +14,11 @@ size = 19
 family = "PlemolJP Console NF"
 style = "Regular"
 
-# moving between tmux windows cmd+a, cmd+s, cmd+d etc..
+# moving between tmux windows alt+a, alt+s, alt+d etc..
 [[keyboard.bindings]]
 key = "A"
 mods = "Alt"
+# <Esc> + d
 chars = "\u001ba"
 
 [[keyboard.bindings]]
@@ -73,31 +74,31 @@ key = "V"
 mods = "Command"
 action = "Paste"
 
-# moving through vim buffers(bufferline)
+# For Primeagen's harpoon neovim plugin
 [[keyboard.bindings]]
-key = "1"
+key = "Key1"
 mods = "Command"
 chars = "\u001b1"
 
 [[keyboard.bindings]]
-key = "2"
+key = "Key2"
 mods = "Command"
 chars = "\u001b2"
 
 [[keyboard.bindings]]
-key = "3"
+key = "Key3"
 mods = "Command"
 chars = "\u001b3"
 
 [[keyboard.bindings]]
-key = "4"
+key = "Key4"
 mods = "Command"
 chars = "\u001b4"
 
 [[keyboard.bindings]]
-key = "5"
+key = "e"
 mods = "Command"
-chars = "\u001b5"
+chars = "\u001be"
 
 # tmux doesn't work ctrl + <digit> without this
 [[keyboard.bindings]]
