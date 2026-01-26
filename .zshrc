@@ -116,6 +116,16 @@ alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already ex
 alias lint='ruff check --fix --unsafe-fixes src/; 2>/dev/null 1>&2 ruff check --fix --unsafe-fixes app/; ruff check --fix --unsafe-fixes tests/; ruff format .'
 alias t='~/tmux-sessionizer'
 alias f='fzf --preview="cat {}" --bind enter:"become(nvim {})"'
+fif() {
+  local initial_query="${*:-}"
+  
+  fzf --ansi --disabled --query "$initial_query" \
+      --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case -- {q} || true" \
+      --delimiter : \
+      --preview "bat --style=numbers --highlight-line {2} {1} 2>/dev/null || cat {1}" \
+      --bind "enter:become(nvim +{2} {1})" \
+      --header "Search in files (Live Grep)"
+}
 
 bindkey -s '^T' '~/tmux-sessionizer\n'
 
