@@ -116,6 +116,7 @@ alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already ex
 alias lint='ruff check --fix --unsafe-fixes src/; 2>/dev/null 1>&2 ruff check --fix --unsafe-fixes app/; ruff check --fix --unsafe-fixes tests/; ruff format .'
 alias t='~/tmux-sessionizer'
 alias f='fzf --preview="cat {}" --bind enter:"become(nvim {})"'
+alias o=opencode
 fif() {
   local initial_query="${*:-}"
   
