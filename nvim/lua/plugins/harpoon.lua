@@ -19,7 +19,7 @@ return {
         -- key = "e"
         -- mods = "Command"
         -- chars = "\u001be"
-		vim.keymap.set('n', '<Esc>e', function()
+		vim.keymap.set('n', '<C-e>', function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end)
 
