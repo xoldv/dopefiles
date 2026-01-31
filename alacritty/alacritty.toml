@@ -14,52 +14,14 @@ size = 19
 family = "PlemolJP Console NF"
 style = "Regular"
 
-# moving between tmux windows alt+a, alt+s, alt+d etc..
-[[keyboard.bindings]]
-key = "A"
-mods = "Alt"
-# <Esc> + d
-chars = "\u001ba"
+[colors.primary]
+background = '#000000'
 
-[[keyboard.bindings]]
-key = "S"
-mods = "Alt"
-chars = "\u001bs"
+[cursor]
+style = "Underline"
 
-[[keyboard.bindings]]
-key = "D"
-mods = "Alt"
-chars = "\u001bd"
-
-[[keyboard.bindings]]
-key = "F"
-mods = "Alt"
-chars = "\u001bf"
-
-[[keyboard.bindings]]
-key = "G"
-mods = "Alt"
-chars = "\u001bg"
-
-[[keyboard.bindings]]
-key = "Z"
-mods = "Alt"
-chars = "\u001bz"
-
-[[keyboard.bindings]]
-key = "X"
-mods = "Alt"
-chars = "\u001bx"
-
-[[keyboard.bindings]]
-key = "C"
-mods = "Alt"
-chars = "\u001bc"
-
-[[keyboard.bindings]]
-key = "V"
-mods = "Alt"
-chars = "\u001bv"
+[env]
+TERM = "xterm-256color"
 
 [selection]
 save_to_clipboard = true
@@ -74,57 +36,22 @@ key = "V"
 mods = "Command"
 action = "Paste"
 
-# For Primeagen's harpoon neovim plugin
-[[keyboard.bindings]]
-key = "Key1"
-mods = "Command"
-chars = "\u001b1"
-
-[[keyboard.bindings]]
-key = "Key2"
-mods = "Command"
-chars = "\u001b2"
-
-[[keyboard.bindings]]
-key = "Key3"
-mods = "Command"
-chars = "\u001b3"
-
-[[keyboard.bindings]]
-key = "Key4"
-mods = "Command"
-chars = "\u001b4"
-
-[[keyboard.bindings]]
-key = "e"
-mods = "Command"
-chars = "\u001be"
-
 # tmux doesn't work ctrl + <digit> without this
-[[keyboard.bindings]]
-key = "Key1"
-mods = "Control"
-chars = "\u001B[49;5u"
-[[keyboard.bindings]]
-key = "Key2"
-mods = "Control"
-chars = "\u001B[50;5u"
-
-[[keyboard.bindings]]
-key = "Key3"
-mods = "Control"
-chars = "\u001B[51;5u"
-
-[[keyboard.bindings]]
-key = "Key4"
-mods = "Control"
-chars = "\u001B[52;5u"
-
-[colors.primary]
-background = '#000000'
-
-[cursor]
-style = "Underline"
-
-[env]
-TERM = "xterm-256color"
+# [[keyboard.bindings]]
+# key = "Key1"
+# mods = "Control"
+# chars = "\u001B[49;5u"
+# [[keyboard.bindings]]
+# key = "Key2"
+# mods = "Control"
+# chars = "\u001B[50;5u"
+#
+# [[keyboard.bindings]]
+# key = "Key3"
+# mods = "Control"
+# chars = "\u001B[51;5u"
+#
+# [[keyboard.bindings]]
+# key = "Key4"
+# mods = "Control"
+# chars = "\u001B[52;5u"
