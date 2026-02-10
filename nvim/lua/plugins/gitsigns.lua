@@ -13,8 +13,21 @@ return {
 			},
 			preview_config = nil,
 			attach_to_untracked = false,
-			on_attach = function(bufnr)
-			end,
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    vim.keymap.set('n', ']g', function()
+      if vim.wo.diff then return ']g' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, { expr = true, buffer = bufnr })
+
+    vim.keymap.set('n', '[g', function()
+      if vim.wo.diff then return '[g' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, { expr = true, buffer = bufnr })
+  end
 		})
 	end,
 }
