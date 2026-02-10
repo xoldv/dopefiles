@@ -1,6 +1,3 @@
--- OPEN APPS USE OPT + [1..9]
--- opt + enter "ghostty"
-
 local app_map = {
 	["1"] = "Alacritty",
 	["2"] = "Google Chrome",
@@ -10,6 +7,7 @@ local app_map = {
 	["6"] = "Antigravity",
 	["7"] = "OBS",
 	["8"] = "Obsidian",
+    ["9"] = "Things3",
 }
 
 for key, app_name in pairs(app_map) do
