@@ -36,6 +36,27 @@ key = "V"
 mods = "Command"
 action = "Paste"
 
+# For Primeagen's harpoon neovim plugin
+[[keyboard.bindings]]
+key = "Key1"
+mods = "Command"
+chars = "\u001b1"
+
+[[keyboard.bindings]]
+key = "Key2"
+mods = "Command"
+chars = "\u001b2"
+
+[[keyboard.bindings]]
+key = "Key3"
+mods = "Command"
+chars = "\u001b3"
+
+[[keyboard.bindings]]
+key = "Key4"
+mods = "Command"
+chars = "\u001b4"
+
 # tmux doesn't work ctrl + <digit> without this
 # [[keyboard.bindings]]
 # key = "Key1"
