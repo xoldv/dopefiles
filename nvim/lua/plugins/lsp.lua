@@ -24,6 +24,9 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
 				json = { "jq" },
 				bash = { "shfmt" },
 				sh = { "shfmt" },
@@ -32,6 +35,16 @@ return {
 				jq = {
 					command = "jq",
 					args = { "-S", "--indent", "2", "--ascii-output", "." },
+				},
+				prettier = {
+					args = {
+						"--tab-width",
+						"4",
+						"--use-tabs",
+						"false",
+						"--stdin-filepath",
+						"$FILENAME",
+					},
 				},
 			},
 		})
@@ -130,7 +143,12 @@ return {
 		vim.lsp.config("tsserver", {
 			capabilities = capabilities,
 			cmd = { "typescript-language-server", "--stdio" },
-			filetypes = { "javascript", "typescript", "css", "html" },
+			-- filetypes = {
+			-- 	"javascript",
+			-- 	"javascriptreact",
+			-- 	"typescript",
+			-- 	"typescriptreact",
+			-- },
 		})
 
 		vim.lsp.enable("lua_ls")
