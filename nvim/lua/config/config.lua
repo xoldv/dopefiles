@@ -74,7 +74,19 @@ function _G.DiagnosticsCount()
     return table.concat(parts, "%#StatusLine#|") .. "%#StatusLine#"
 end
 
-local base_statusline = "%f %y %m %= %{%v:lua.DiagnosticsCount()%} %l:%c [%p%%]"
+function LspStatus()
+	local clients = vim.lsp.get_clients()
+	if #clients == 0 then
+		return "LSP: Inactive"
+	end
+	local names = {}
+	for _, client in ipairs(clients) do
+		table.insert(names, client.name)
+	end
+	return "LSP: " .. table.concat(names, ", ")
+end
+
+local base_statusline = "%f %y %m %= %{%v:lua.DiagnosticsCount()%} %l:%c [%p%%] %{v:lua.LspStatus()}"
 local inactive_statusline = "%#Comment# " .. base_statusline .. "%#Normal#"
 
 vim.o.statusline = base_statusline
