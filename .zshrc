@@ -129,5 +129,3 @@ fif() {
 }
 
 bindkey -s '^T' '~/tmux-sessionizer\n'
-
-fastfetch
