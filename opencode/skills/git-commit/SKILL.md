@@ -13,6 +13,7 @@ This skill helps you create and maintain high-quality git commits that match the
    - Run `git status` to see which files are modified or untracked.
    - Run `git diff` (and `git diff --cached`) to examine the actual code changes.
    - Determine if the changes across multiple files are logically related or should be split into multiple commits.
+   - Do not touch .gitignore — it must always remain in the modified state and should never be staged or committed.
 
 2. **Fix Existing Commits**:
    - Check the recent local commits that haven't been pushed (e.g., `git log @{u}..HEAD --oneline` or the last few commits).
@@ -24,6 +25,17 @@ This skill helps you create and maintain high-quality git commits that match the
    - Format: `type(scope): description`
    - **Types**: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`.
    - **Scopes**: `nvim:config`, `nvim:harpoon`, `nvim:neotest`, `alacritty`, `tmux`, `zshrc`, `config`, etc.
+
+## Forbidden Commands
+
+The following commands are strictly forbidden:
+
+- git reset --hard
+- git restore .
+- git checkout -- .
+- git clean -fd
+- git add -A
+- git add .
 
 ## Commit Examples
 - `feat(config): Add opencode configuration`
