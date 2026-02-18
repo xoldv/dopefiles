@@ -6,7 +6,7 @@ opacity = 0.9
 # startup_mode = "Maximized"
 
 [font]
-size = 19
+size = 22
 
 [font.normal]
 # family = "Menlo Nerd Font"
