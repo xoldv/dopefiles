@@ -3,6 +3,9 @@
   "plugin": [
     "opencode-gemini-auth@latest"
   ],
+  "experimental": {
+    "disable_paste_summary": true
+  },
   "keybinds": {
     "model_favorite_toggle": "<leader>+f"
   },
