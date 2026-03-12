@@ -1,1 +1,11 @@
 .DS_Store
+yarn
+node_modules
+tmux-sessionizer
+qBittorrent
+opencode/commands
+opencode/rules
+jgit
+linearmouse
+karabiner/automatic_backups
+nvim-obsidian
