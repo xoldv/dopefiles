@@ -113,7 +113,7 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
-	capablities = capabilities,
+	capabilities = capabilities,
 })
 
 vim.lsp.config("basedpyright", { capabilities = capabilities })
