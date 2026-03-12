@@ -117,7 +117,7 @@ alias lint='ruff check --fix --unsafe-fixes src/; 2>/dev/null 1>&2 ruff check --
 alias t='~/tmux-sessionizer'
 alias f='fzf --preview="cat {}" --bind enter:"become(nvim {})"'
 alias o=opencode
-fif() {
+fw() {
   local initial_query="${*:-}"
   
   fzf --ansi --disabled --query "$initial_query" \
