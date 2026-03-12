@@ -129,3 +129,4 @@ fw() {
 }
 
 bindkey -s '^T' '~/tmux-sessionizer\n'
+bindkey '^b' beginning-of-line
