@@ -33,6 +33,13 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "C", function()
 	win:setFrame(f)
 end)
 
+hs.hotkey.bind({ "ctrl", "cmd", "shift" }, "F", function()
+  local win = hs.window.focusedWindow()
+  if not win then return end
+
+  win:setFrame(win:screen():frame())
+end)
+
 hs.hotkey.bind({ "ctrl", "cmd" }, "H", function()
 	local win = hs.window.focusedWindow()
 	if not win then
