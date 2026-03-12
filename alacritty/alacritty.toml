@@ -11,7 +11,8 @@ size = 22
 [font.normal]
 # family = "Menlo Nerd Font"
 # family = "Iosevka Nerd Font"
-family = "PlemolJP Console NF"
+# family = "PlemolJP Console NF"
+family = "GoMono Nerd Font"
 style = "Regular"
 
 [colors.primary]
