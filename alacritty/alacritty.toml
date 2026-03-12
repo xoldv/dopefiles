@@ -58,6 +58,11 @@ key = "Key4"
 mods = "Command"
 chars = "\u001b4"
 
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b[13;2u"
+
 # tmux doesn't work ctrl + <digit> without this
 # [[keyboard.bindings]]
 # key = "Key1"
