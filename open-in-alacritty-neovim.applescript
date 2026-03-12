@@ -1,5 +1,5 @@
 on open theFiles
-    set nvimPath to "/opt/homebrew/bin/nvim"
+    set nvimPath to "~/.local/share/bob/nvim-bin/nvim"
     set alacrittyPath to "/Applications/Alacritty.app/Contents/MacOS/alacritty"
 
     repeat with f in theFiles
