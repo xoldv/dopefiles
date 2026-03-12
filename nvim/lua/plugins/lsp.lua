@@ -61,15 +61,15 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	}),
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
+	-- snippet = {
+	-- 	expand = function(args)
+	-- 		require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+	-- 	end,
+	-- },
 
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For vsnip users.
+		-- { name = "luasnip" }, -- For vsnip users.
 	}, { { name = "buffer" }, { name = "nvim_lsp_signature_help" } }),
 })
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -92,7 +92,7 @@ cmp.setup.cmdline(":", {
 local cmp_lsp = require("cmp_nvim_lsp")
 local capabilities =
 	vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
-vim.lsp.enable({ "lua_ls", "basedpyright" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "gopls" })
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -117,6 +117,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("basedpyright", { capabilities = capabilities })
+vim.lsp.config("gopls", { capabilities = capabilities })
 
 vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" })
 vim.keymap.set("n", "<M-Enter>", vim.lsp.buf.code_action)
