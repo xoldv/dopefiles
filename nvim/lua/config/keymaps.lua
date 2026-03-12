@@ -2,6 +2,9 @@ vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
 vim.keymap.set("n", "<leader>w", ":write<CR>")
 vim.keymap.set("n", "<leader>q", ":quit<CR>")
 
+-- This is going to get me cancelled
+vim.keymap.set("i", "<C-c>", "<Esc>")
+
 vim.keymap.set("n", ";", ":", { noremap = true })
 -- fast moving text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
