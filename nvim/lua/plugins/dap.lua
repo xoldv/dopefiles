@@ -2,6 +2,7 @@ vim.pack.add({
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
 	{ src = "https://github.com/mfussenegger/nvim-dap-python" },
 	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/leoluz/nvim-dap-go" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = vim.fn.expand("~/code/breakpoints-bridge.nvim") },
 })
@@ -17,6 +18,7 @@ local function close_debugger()
 end
 
 require("dap-python").setup("/opt/homebrew/bin/python3")
+require("dap-go").setup()
 require("nvim-dap-virtual-text").setup()
 
 dap.listeners.before.attach.dapui_config = function()

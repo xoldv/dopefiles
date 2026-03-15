@@ -15,6 +15,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+		go = { "golangci-lint" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		typescriptreact = { "prettier" },
@@ -43,6 +44,7 @@ require("conform").setup({
 local cmp = require("cmp")
 
 cmp.setup({
+	preselect = cmp.PreselectMode.None,
 	mapping = cmp.mapping.preset.insert({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -117,7 +119,17 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("basedpyright", { capabilities = capabilities })
-vim.lsp.config("gopls", { capabilities = capabilities })
+vim.lsp.config("gopls", {
+	capabilities = capabilities,
+	settings = {
+		gopls = {
+			gofumpt = true,
+			completeUnimported = true,
+			usePlaceholders = false,
+			staticcheck = true,
+		},
+	},
+})
 
 vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" })
 vim.keymap.set("n", "<M-Enter>", vim.lsp.buf.code_action)
