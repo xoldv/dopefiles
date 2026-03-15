@@ -107,6 +107,7 @@ source ~/gitstatus/gitstatus.prompt.zsh
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export EDITOR='vim'
 
 alias n=nvim
