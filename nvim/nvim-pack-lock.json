@@ -93,6 +93,10 @@
       "rev": "b516f20b487b0ac6a281e376dfac1d16b5040041",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
+    "nvim-dap-go": {
+      "rev": "b4421153ead5d726603b02743ea40cf26a51ed5f",
+      "src": "https://github.com/leoluz/nvim-dap-go"
+    },
     "nvim-dap-python": {
       "rev": "1808458eba2b18f178f990e01376941a42c7f93b",
       "src": "https://github.com/mfussenegger/nvim-dap-python"
