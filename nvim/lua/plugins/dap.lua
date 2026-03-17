@@ -88,11 +88,11 @@ vim.api.nvim_create_autocmd("BufRead", {
 	callback = load_breakpoints,
 })
 
-vim.keymap.set({ "n", "i", "v" }, "<leader>bb", function()
+vim.keymap.set("n", "<leader>bb", function()
 	dap.toggle_breakpoint()
 	store_breakpoints(false)
 end)
-vim.keymap.set({ "n", "i", "v" }, "<leader>bc", function()
+vim.keymap.set("n", "<leader>bc", function()
 	dap.clear_breakpoints()
 	store_breakpoints(true)
 end)
