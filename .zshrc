@@ -104,10 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/gitstatus/gitstatus.prompt.zsh
 
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
 export EDITOR='vim'
 
 alias n=nvim
@@ -131,3 +128,8 @@ fw() {
 
 bindkey -s '^T' '~/tmux-sessionizer\n'
 bindkey '^b' beginning-of-line
+
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
