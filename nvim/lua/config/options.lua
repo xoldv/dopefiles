@@ -4,17 +4,19 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.cursorcolumn = true
-vim.opt.colorcolumn = "120"
+vim.o.colorcolumn = "120"
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 8
 vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.clipboard = "unnamedplus"
 vim.o.encoding = "UTF-8"
+vim.o.list = true
+vim.o.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 
 -- Splits
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Indent Settings
 vim.o.expandtab = true
