@@ -14,6 +14,7 @@ This skill helps you create and maintain high-quality git commits that match the
    - Run `git diff` (and `git diff --cached`) to examine the actual code changes.
    - Determine if the changes across multiple files are logically related or should be split into multiple commits.
    - Do not touch .gitignore — it must always remain in the modified state and should never be staged or committed.
+   - Never stage untracked files or directories (shown as `??` in `git status`) without explicit user permission.
 
 2. **Fix Existing Commits**:
    - Check the recent local commits that haven't been pushed (e.g., `git log @{u}..HEAD --oneline` or the last few commits).
