@@ -11,8 +11,6 @@ vim.o.wrap = false
 vim.o.tabstop = 4
 vim.o.clipboard = "unnamedplus"
 vim.o.encoding = "UTF-8"
-vim.o.list = true
-vim.o.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 
 -- Splits
 vim.o.splitbelow = true
