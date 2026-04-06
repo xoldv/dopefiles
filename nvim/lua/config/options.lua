@@ -30,6 +30,7 @@ vim.o.signcolumn = "yes"
 vim.o.completeopt = "menu,menuone,noselect"
 -- File handling
 vim.o.undofile = true
+vim.opt.undolevels = 1000000
 vim.o.undodir = vim.fn.expand("~/.vim/undodir")
 vim.o.swapfile = false
 vim.o.backup = false
