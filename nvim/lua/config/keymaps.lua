@@ -38,3 +38,11 @@ vim.keymap.set("n", "<leader>gl", function()
 	vim.cmd("Git log -G" .. word .. " -- .")
 end, { desc = "Git log -G <cword>" })
 
+local isLspDiagnosticsVisible = true
+vim.keymap.set("n", "<leader>te", function()
+  isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+  vim.diagnostic.config({
+    virtual_text = isLspDiagnosticsVisible,
+    underline = isLspDiagnosticsVisible,
+  })
+end)
