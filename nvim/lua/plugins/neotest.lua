@@ -11,6 +11,9 @@ neotest.setup({
 		require("neotest-python")({
 			runner = "pytest",
 			args = { "-vv" },
+            dap = {
+                justMyCode = false,
+            }
 		}),
 	},
 })
