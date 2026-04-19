@@ -134,3 +134,8 @@ export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+# Added by Antigravity
+export PATH="/Users/dlk/.antigravity/antigravity/bin:$PATH"
+export _ZO_DOCTOR=0
+eval "$(zoxide init zsh --cmd cd)"
+
