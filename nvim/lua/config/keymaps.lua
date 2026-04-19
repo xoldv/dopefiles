@@ -46,3 +46,5 @@ vim.keymap.set("n", "<leader>te", function()
     underline = isLspDiagnosticsVisible,
   })
 end)
+
+vim.keymap.set("n", "*", "*N", { noremap = true, silent = true })
