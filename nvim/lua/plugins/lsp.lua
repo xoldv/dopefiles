@@ -2,12 +2,7 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/hrsh7th/nvim-cmp" },
-	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
-	{ src = "https://github.com/hrsh7th/cmp-buffer" },
-	{ src = "https://github.com/hrsh7th/cmp-path" },
-	{ src = "https://github.com/hrsh7th/cmp-cmdline" },
-	{ src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 })
 
 require("mason").setup()
@@ -41,59 +36,66 @@ require("conform").setup({
 		},
 	},
 })
-local cmp = require("cmp")
 
-cmp.setup({
-	preselect = cmp.PreselectMode.None,
-	mapping = cmp.mapping.preset.insert({
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-	}),
-	-- snippet = {
-	-- 	expand = function(args)
-	-- 		require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-	-- 	end,
-	-- },
-
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		-- { name = "luasnip" }, -- For vsnip users.
-	}, { { name = "buffer" }, { name = "nvim_lsp_signature_help" } }),
-})
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
+require("blink.cmp").setup({
+	signature = { enabled = true },
+	keymap = {
+		preset = "none",
+		["<C-Space>"] = { "show", "fallback" },
+		["<CR>"] = { "accept", "fallback" },
+		["<Tab>"] = { "select_next", "fallback" },
+		["<S-Tab>"] = { "select_prev", "fallback" },
+		["<C-e>"] = { "hide" },
+	},
+	completion = {
+		documentation = {
+			auto_show = true,
+			auto_show_delay_ms = 200,
+		},
+		list = {
+			selection = {
+				preselect = false,
+			},
+		},
+	},
 	sources = {
-		{ name = "buffer" },
+		default = { "lsp", "path", "buffer" },
+		providers = {
+			buffer = { score_offset = 5 },
+		},
+	},
+	cmdline = {
+		enabled = true,
+		completion = {
+			menu = { auto_show = true },
+			list = {
+				selection = {
+					preselect = false,
+					auto_insert = true,
+				},
+			},
+		},
+		keymap = {
+			preset = "none",
+			["<Tab>"] = { "select_next", "show", "fallback" },
+			["<S-Tab>"] = { "select_prev", "fallback" },
+			["<C-e>"] = { "hide", "fallback" },
+			["<CR>"] = { "accept", "fallback" },
+		},
+		sources = function()
+			local type = vim.fn.getcmdtype()
+			if type == "/" or type == "?" then
+				return { "buffer" }
+			end
+			if type == ":" then
+				return { "cmdline", "path" }
+			end
+			return {}
+		end,
 	},
 })
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-	matching = { disallow_symbol_nonprefix_matching = false },
-})
-local cmp_lsp = require("cmp_nvim_lsp")
-local capabilities =
-	vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
+
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 vim.lsp.enable({ "lua_ls", "basedpyright", "gopls", "tsserver" })
 vim.lsp.config("lua_ls", {
 	settings = {
@@ -118,7 +120,17 @@ vim.lsp.config("lua_ls", {
 	capabilities = capabilities,
 })
 
-vim.lsp.config("basedpyright", { capabilities = capabilities })
+vim.lsp.config("basedpyright", {
+	capabilities = capabilities,
+	settings = {
+		basedpyright = {
+			analysis = {
+				diagnosticMode = "workspace",
+				autoImportCompletions = true,
+			},
+		},
+	},
+})
 vim.lsp.config("gopls", {
 	capabilities = capabilities,
 	settings = {
