@@ -1,0 +1,15 @@
+window-decoration = true
+background-opacity = 0.9
+
+font-family = GoMono Nerd Font
+font-size = 22
+
+cursor-style = underline
+macos-option-as-alt = true
+keybind = shift+enter=text:\x1b\r
+
+background = #000000
+# background-image = ~/Downloads/a_field_of_grass_at_night.jpeg
+# background-image-fit = cover
+# background-image-position = center
+# background-image-opacity = 0.1
