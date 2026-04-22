@@ -80,7 +80,7 @@ require("blink.cmp").setup({
 			["<Tab>"] = { "select_next", "show", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<C-e>"] = { "hide", "fallback" },
-			["<CR>"] = { "accept", "fallback" },
+			["<CR>"] = { "accept_and_enter", "fallback" },
 		},
 		sources = function()
 			local type = vim.fn.getcmdtype()
