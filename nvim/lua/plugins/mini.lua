@@ -7,7 +7,19 @@ vim.pack.add({
 
 require("mini.pairs").setup()
 require("mini.surround").setup()
-require("mini.ai").setup()
+
+local spec_treesitter = require('mini.ai').gen_spec.treesitter
+require('mini.ai').setup({
+  custom_textobjects = {
+    f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+    c = spec_treesitter({ a = "@class.outer", i = "@class.inner" }),
+    a = spec_treesitter({ a = "@parameter.outer", i = "@parameter.inner" }),
+    o = spec_treesitter({
+      a = { '@conditional.outer', '@loop.outer' },
+      i = { '@conditional.inner', '@loop.inner' },
+    }),
+  }
+})
 
 local miniclue = require("mini.clue")
 miniclue.setup({
