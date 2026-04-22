@@ -1,5 +1,5 @@
 local app_map = {
-	["1"] = "Alacritty",
+	["1"] = "Ghostty",
 	["2"] = "Google Chrome",
 	["3"] = "Telegram",
 	["4"] = "Antigravity",
