@@ -8,7 +8,6 @@ vim.o.colorcolumn = "120"
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 8
 vim.o.wrap = false
-vim.o.tabstop = 4
 vim.o.clipboard = "unnamedplus"
 vim.o.encoding = "UTF-8"
 
