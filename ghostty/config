@@ -1,8 +1,7 @@
 window-decoration = true
-background-opacity = 0.9
 
 font-family = GoMono Nerd Font
-font-size = 22
+font-size = 19
 
 cursor-style = underline
 macos-option-as-alt = true
@@ -13,6 +12,7 @@ keybind = super+digit_3=text:\x1b3
 keybind = super+digit_4=text:\x1b4
 
 background = #000000
+background-opacity = 0.9
 # background-image = ~/Downloads/a_field_of_grass_at_night.jpeg
 # background-image-fit = cover
 # background-image-position = center
