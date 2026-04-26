@@ -96,7 +96,7 @@ require("blink.cmp").setup({
 })
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
-vim.lsp.enable({ "lua_ls", "basedpyright", "gopls", "tsserver" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "gopls", "ts_ls" })
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -142,7 +142,7 @@ vim.lsp.config("gopls", {
 		},
 	},
 })
-vim.lsp.config("tsserver", { capabilities = capabilities })
+vim.lsp.config("ts_ls", { capabilities = capabilities })
 
 vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" })
 vim.keymap.set("n", "<M-Enter>", vim.lsp.buf.code_action)
