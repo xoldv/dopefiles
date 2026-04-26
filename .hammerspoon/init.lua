@@ -21,8 +21,8 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "C", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	local windowWidth = 1280
-	local windowHeight = 800
+	local windowWidth = 1000
+	local windowHeight = 600
 
 	local f = win:frame()
 	f.x = max.x + (max.w - windowWidth) / 2
