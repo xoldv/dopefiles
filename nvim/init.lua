@@ -2,7 +2,7 @@ require('config.options')
 require('config.keymaps')
 
 require('plugins.lsp')
-require('plugins.colors')
+require('plugins.noir')
 require('plugins.treesitter')
 require('plugins.neo-tree')
 require('plugins.fzf')
