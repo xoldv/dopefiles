@@ -14,7 +14,7 @@
       "src": "https://github.com/MironPascalCaseFan/debugmaster.nvim"
     },
     "fzf-lua": {
-      "rev": "ffa44ee9470743a7697d28df3a1a216fdfe2b09d",
+      "rev": "b437bafc981a180d609bb4092c56ce8999f7a2c4",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -27,7 +27,7 @@
       "version": "'harpoon2'"
     },
     "mason.nvim": {
-      "rev": "12ddd182d9efbdc848b540f16484a583d52da0fb",
+      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.ai": {
@@ -51,7 +51,7 @@
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "neo-tree.nvim": {
-      "rev": "4d0828d95adaf4250c1373d2cd9318d3509712b7",
+      "rev": "19d20a99bf0061a5ecc4343d2f09fa713306c965",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim"
     },
     "neotest": {
@@ -63,7 +63,7 @@
       "src": "https://github.com/nvim-neotest/neotest-python"
     },
     "noir.nvim": {
-      "rev": "9b685a5c914e0f596522d579f90c2ac430e306c6",
+      "rev": "4668209e4304ec2f20a52ced392be6b23d2bae54",
       "src": "https://github.com/xoldv/noir.nvim"
     },
     "nui.nvim": {
@@ -87,7 +87,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "81878de76c0de4ce289513734ad80c31ec7871b8",
+      "rev": "6419b36f50c42420cbbf1d3ffba573094cf414c8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -123,7 +123,7 @@
       "src": "https://github.com/christoomey/vim-tmux-navigator"
     },
     "vim-wakatime": {
-      "rev": "8217dfb5a5a3ad3a509365d8a39d7daca12b1745",
+      "rev": "5f458398a217735b908ae40d1c2851cc69e7d817",
       "src": "https://github.com/wakatime/vim-wakatime"
     }
   }
