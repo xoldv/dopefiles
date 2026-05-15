@@ -137,6 +137,7 @@ bindkey '^b' beginning-of-line
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+export PATH=$PATH:/Users/dlk/.spicetify
