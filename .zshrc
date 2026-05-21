@@ -1,3 +1,5 @@
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 # History
 HISTSIZE=10000
 SAVEHIST=10000
