@@ -106,10 +106,6 @@
       "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
-    "persistent-breakpoints.nvim": {
-      "rev": "d1656221836207787b8a7969cc2dc72668c4742a",
-      "src": "https://github.com/Weissle/persistent-breakpoints.nvim"
-    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

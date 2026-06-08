@@ -4,27 +4,19 @@ vim.pack.add({
 	{ src = "https://github.com/leoluz/nvim-dap-go" },
 	{ src = "https://github.com/MironPascalCaseFan/debugmaster.nvim" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
-	{ src = "https://github.com/Weissle/persistent-breakpoints.nvim" },
 })
 
 local dap = require("dap")
 local debugmaster = require("debugmaster")
-local persistent_breakpoints = require("persistent-breakpoints.api")
 
 require("dap-python").setup("/opt/homebrew/bin/python3")
 require("dap-go").setup()
 require("nvim-dap-virtual-text").setup()
-require("persistent-breakpoints").setup({
-	load_breakpoints_event = { "BufReadPost" },
-})
-
-dap.listeners.before.attach.dapui_config = debugmaster.mode.toggle
-dap.listeners.before.launch.dapui_config = debugmaster.mode.toggle
 
 vim.keymap.set({ "n", "v" }, "<leader>z", debugmaster.mode.toggle, { nowait = true })
-vim.keymap.set("n", "<leader>bb", persistent_breakpoints.toggle_breakpoint)
+vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint)
 
-vim.keymap.set("n", "<leader>bc", persistent_breakpoints.clear_all_breakpoints)
+vim.keymap.set("n", "<leader>bc", dap.clear_breakpoints)
 
 vim.keymap.set("n", "<F1>", dap.continue)
 vim.keymap.set("n", "<F2>", dap.step_into)
