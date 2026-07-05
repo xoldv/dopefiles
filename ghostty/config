@@ -17,3 +17,4 @@ background-opacity = 0.9
 # background-image-fit = cover
 # background-image-position = center
 # background-image-opacity = 0.1
+confirm-close-surface = false
