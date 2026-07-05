@@ -35,6 +35,7 @@ eval "$(zoxide init zsh --cmd cd)"
 # Aliases
 alias zi=__zoxide_zi
 alias n=nvim
+alias vim=nvim
 alias lg=lazygit
 alias venv='. .venv/bin/activate'
 alias syncvault='git commit -m "vault backup: $(date "+%Y-%m-%d %H:%M:%S")"'
