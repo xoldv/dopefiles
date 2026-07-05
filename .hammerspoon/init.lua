@@ -1,12 +1,13 @@
 local app_map = {
 	["1"] = "Ghostty",
 	["2"] = "Helium",
-	["3"] = "Telegram",
-	["4"] = "Things3",
+	["3"] = "Things3",
+	["4"] = "Anki",
 	["5"] = "Spotify",
 	["6"] = "Slack",
-	["7"] = "OBS",
+	["7"] = "Telegram",
 	["8"] = "Obsidian",
+	["9"] = "OBS",
 }
 
 for key, app_name in pairs(app_map) do
