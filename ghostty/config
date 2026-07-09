@@ -1,7 +1,7 @@
 window-decoration = true
 
-font-family = GoMono Nerd Font
-font-size = 19
+font-family = Iosevka Nerd Font
+font-size = 21
 
 cursor-style = underline
 macos-option-as-alt = true
