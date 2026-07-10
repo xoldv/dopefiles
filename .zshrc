@@ -55,6 +55,13 @@ fw() {
       --bind "enter:become(nvim +{2} {1})" \
       --header "Search in files (Live Grep)"
 }
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 
 # Keybindings
 bindkey -s '^T' '~/tmux-sessionizer\n'
