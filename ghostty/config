@@ -1,6 +1,6 @@
 window-decoration = true
 
-font-family = Iosevka Nerd Font
+font-family = Iosevka Term
 font-size = 21
 
 cursor-style = underline
