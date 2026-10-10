@@ -69,3 +69,33 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "L", function()
 		h = screenFrame.h,
 	})
 end)
+
+hs.hotkey.bind({ "ctrl", "cmd" }, "J", function()
+	local win = hs.window.focusedWindow()
+	if not win then
+		return
+	end
+
+	local screenFrame = win:screen():frame()
+	win:setFrame({
+		x = screenFrame.x,
+		y = screenFrame.y + screenFrame.h / 2,
+		w = screenFrame.w,
+		h = screenFrame.h / 2,
+	})
+end)
+
+hs.hotkey.bind({ "ctrl", "cmd" }, "K", function()
+	local win = hs.window.focusedWindow()
+	if not win then
+		return
+	end
+
+	local screenFrame = win:screen():frame()
+	win:setFrame({
+		x = screenFrame.x,
+		y = screenFrame.y,
+		w = screenFrame.w,
+		h = screenFrame.h / 2,
+	})
+end)
