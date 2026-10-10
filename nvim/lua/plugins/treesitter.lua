@@ -3,7 +3,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-context" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 })
-require("nvim-treesitter").install({ "vimdoc", "python", "lua", "markdown", "markdown_inline", "go" })
+require("nvim-treesitter").install({ "vimdoc", "python", "lua", "markdown", "markdown_inline", "go", "html" })
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		pcall(vim.treesitter.start)
