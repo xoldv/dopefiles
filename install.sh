@@ -1,116 +1,130 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 BGreen="\033[1;32m"
 Blue="\033[0;94m"
+Yellow="\033[0;93m"
 NC='\033[0m'
 
-function installing_func(){
-    brew_installing
-    oh_my_zsh_installing
-    brew_stuff_installing
-    backup_nvim
-    full_replacing_files
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
+function info() {
+    echo -e "${Blue}$1${NC}"
 }
 
-function brew_installing(){
+function ok() {
+    echo -e "${BGreen}$1${NC}"
+}
+
+function warn() {
+    echo -e "${Yellow}$1${NC}"
+}
+
+function install_brew() {
     if command -v brew >/dev/null; then
-        echo -e "${BGreen}Brew already installed!"
-
-    else
-        echo -e "${Blue}Installing Brew..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        ok "Brew already installed!"
+        return
     fi
-    return
+
+    info "Installing Brew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    local prefix
+    for prefix in /opt/homebrew /usr/local; do
+        if [[ -x "$prefix/bin/brew" ]]; then
+            eval "$("$prefix/bin/brew" shellenv)"
+            if ! grep -qs "brew shellenv" ~/.zprofile; then
+                printf '\neval "$(%s/bin/brew shellenv)"\n' "$prefix" >>~/.zprofile
+            fi
+            return
+        fi
+    done
 }
 
-
-function oh_my_zsh_installing(){
-    if [[ $ZSH = $(pwd)/.oh-my-zsh ]]; then
-        echo -e "${BGreen}Oh-My-ZSH already installed!"
-
-    else
-        echo -e "${Blue}Installing Oh-My-ZSH..."
-        export RUNZSH=no
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-        echo -e "${Blue}Installing ZSH plugins..."
-        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-        git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
-
-        # if [[ $SHELL = /bin/bash/ ]]; then
-        #     chsh -s $(which zsh)
-        # fi
+function install_packages() {
+    info "Installing packages from Brewfile..."
+    if ! brew bundle --no-upgrade --file="$DOTFILES/Brewfile"; then
+        warn "Some packages failed to install, continuing..."
     fi
-    return
-
-
 }
 
+function install_gitstatus() {
+    if [[ -d ~/gitstatus ]]; then
+        ok "gitstatus already installed!"
+        return
+    fi
 
-function brew_check_status(){
-    local installing="$1"
-    local name="$2"
-
-    if [[ $installing =~ "Not installed" ]]; then
-        echo -e "${Blue}Installing $name..."
-        brew install $name
-    else
-        echo -e "${BGreen}$name already installed!"
-    fi   
-    return
+    info "Installing gitstatus..."
+    git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
 }
 
+# Symlink $DOTFILES/$1 to $2. Anything already at $2 is moved to $2.bak.<timestamp>.
+function link() {
+    local src="$DOTFILES/$1"
+    local dst="$2"
 
-function brew_stuff_installing(){
-    stuff=("neovim" "lf" "tmux" "fastfetch" "alacritty" "lazygit" "fzf" "colima" "docker" "docker-compose" "ripgrep" "ruff" "pyright")
+    if [[ ! -e "$src" ]]; then
+        warn "Skipping $1 (not in repo)"
+        return
+    fi
 
-    for brew_service in ${stuff[@]}; do
-        brew_check_status "$(brew info "${brew_service}")" "$brew_service"
+    if [[ -L "$dst" && "$(readlink "$dst")" == "$src" ]]; then
+        ok "$dst already linked!"
+        return
+    fi
+
+    if [[ -e "$dst" || -L "$dst" ]]; then
+        warn "Backing up $dst -> $dst.bak.$STAMP"
+        mv "$dst" "$dst.bak.$STAMP"
+    fi
+
+    mkdir -p "$(dirname "$dst")"
+    ln -s "$src" "$dst"
+    info "Linked $dst"
+}
+
+function link_files() {
+    local name
+    for name in nvim alacritty ghostty kitty karabiner opencode yazi; do
+        link "$name" "$HOME/.config/$name"
     done
 
-    return
+    link .zshrc "$HOME/.zshrc"
+    link .tmux.conf "$HOME/.tmux.conf"
+    link .hammerspoon "$HOME/.hammerspoon"
+    link gitstatus.prompt.zsh "$HOME/gitstatus/gitstatus.prompt.zsh"
 }
 
-
-function backup_nvim(){
-    while true; do
-        read -p "Make a backup of your current nvim config (y/n)? " yn
-
-        case $yn in
-            [Yy]* ) mv ~/.config/nvim ~/.config/nvim.bak; mv ~/.local/share/nvim ~/.local/share/nvim.bak; mv ~/.local/state/nvim; ~/.local/state/nvim.bak mv ~/.cache/nvim ~/.cache/nvim.bak; break;;
-            [Nn]* ) break;;
-            * ) echo "Please answer yes or no.";;
-        esac
-
-    done
-
-    if [[ $yn = n ]]; then
-        rm -rf ~/.config/nvim
-        rm -rf ~/.local/share/nvim
-        rm -rf ~/.local/state/nvim
-        rm -rf ~/.cache/nvim
+function install_oh_my_zsh() {
+    if [[ -d ~/.oh-my-zsh ]]; then
+        ok "Oh-My-ZSH already installed!"
+        return
     fi
-    return
-    
+
+    info "Installing Oh-My-ZSH..."
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
-function full_replacing_files(){
-    cp -fr ~/dopefiles/ ~/.config/
-    ln -s ~/.config/.zshrc ~/
-    ln -s ~/.config/gitstatus.prompt.zsh ~/gitstatus/
-    ln -s ~/.config/.tmux.conf ~/
-    return
+function set_default_shell() {
+    if [[ "$SHELL" == */zsh ]]; then
+        ok "zsh already default shell!"
+        return
+    fi
+
+    info "Setting zsh as default shell..."
+    chsh -s /bin/zsh
 }
 
+install_brew
+install_packages
+install_gitstatus
+link_files
+install_oh_my_zsh
+set_default_shell
 
-installing_func
-
-echo -e "${BGreen}Установка zsh по умолчанию:${NC}"
-chsh -s $(which zsh)
-clear
 cat << "EOF"
 
           ⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡴⠶⠚⠛⠛⠛⠛⠓⠶⢦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -131,13 +145,13 @@ cat << "EOF"
 
                                                                                                                       𝟓𝟎𝟕𝟎𝟏𝟓†
 EOF
+
 while true; do
-    read -p "Reload terminal with zsh (y/n)? " yn
+    read -r -p "Reload terminal with zsh (y/n)? " yn
 
     case $yn in
-        [Yy]* ) exec zsh; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
+        [Yy]*) exec zsh ;;
+        [Nn]*) break ;;
+        *) echo "Please answer yes or no." ;;
     esac
-
 done
