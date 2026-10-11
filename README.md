@@ -7,7 +7,6 @@
 - [Tmux](https://github.com/tmux/tmux) config
 - Zsh config
 - Corne choc (42 keys) config
-- [lf](https://github.com/gokcehan/lf) config
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch) config 
 ## Clean Setup (MacOS)
 ```bash
