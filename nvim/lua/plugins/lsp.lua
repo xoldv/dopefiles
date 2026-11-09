@@ -10,7 +10,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-		go = { "golangci-lint" },
+		go = { "goimports", "gofumpt" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		typescriptreact = { "prettier" },
@@ -95,8 +95,9 @@ require("blink.cmp").setup({
 	},
 })
 
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-vim.lsp.enable({ "lua_ls", "basedpyright", "gopls" })
+vim.lsp.config("*", {
+	capabilities = require("blink.cmp").get_lsp_capabilities({}, true),
+})
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -117,11 +118,9 @@ vim.lsp.config("lua_ls", {
 			},
 		},
 	},
-	capabilities = capabilities,
 })
 
 vim.lsp.config("basedpyright", {
-	capabilities = capabilities,
 	settings = {
 		basedpyright = {
 			analysis = {
@@ -132,16 +131,23 @@ vim.lsp.config("basedpyright", {
 	},
 })
 vim.lsp.config("gopls", {
-	capabilities = capabilities,
 	settings = {
 		gopls = {
 			gofumpt = true,
 			completeUnimported = true,
 			usePlaceholders = false,
 			staticcheck = true,
+			semanticTokens = true,
+			analyses = {
+				unusedparams = true,
+				unusedwrite = true,
+				nilness = true,
+				shadow = true,
+			},
 		},
 	},
 })
+vim.lsp.enable({ "lua_ls", "basedpyright", "gopls" })
 
 vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { desc = "Find Usages" })
 vim.keymap.set("n", "<M-Enter>", vim.lsp.buf.code_action)
