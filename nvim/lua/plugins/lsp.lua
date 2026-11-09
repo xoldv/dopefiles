@@ -5,12 +5,57 @@ vim.pack.add({
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 })
 
+--- Reads gci settings from the nearest .golangci.yml (v1 and v2 layouts).
+---@param dirname string
+---@return string[] sections, boolean custom_order
+local function golangci_gci_settings(dirname)
+	local config = vim.fs.find({ ".golangci.yml", ".golangci.yaml" }, { path = dirname, upward = true })[1]
+	if not config then
+		return {}, false
+	end
+	local ok, lines = pcall(vim.fn.readfile, config)
+	if not ok then
+		return {}, false
+	end
+
+	local sections = {}
+	local custom_order = false
+	local gci_indent, sections_indent
+	for _, line in ipairs(lines) do
+		local indent = #line:match("^%s*")
+		local is_blank = line:match("^%s*$") or line:match("^%s*#")
+		if not is_blank then
+			local item = line:match("^%s*-%s*(.-)%s*$")
+			if sections_indent and item and indent >= sections_indent then
+				item = item:gsub("%s+#.*$", "")
+				item = item:gsub("^[\"'](.*)[\"']$", "%1")
+				table.insert(sections, item)
+			else
+				sections_indent = nil
+				if gci_indent and indent <= gci_indent then
+					gci_indent = nil
+				end
+				if gci_indent then
+					if line:match("^%s*sections:%s*$") then
+						sections_indent = indent
+					elseif line:match("^%s*custom%-order:%s*true") then
+						custom_order = true
+					end
+				elseif line:match("^%s*gci:%s*$") then
+					gci_indent = indent
+				end
+			end
+		end
+	end
+	return sections, custom_order
+end
+
 require("mason").setup()
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-		go = { "goimports", "gofumpt" },
+		go = { "goimports", "gci", "gofumpt" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		typescriptreact = { "prettier" },
@@ -20,6 +65,20 @@ require("conform").setup({
 		sh = { "shfmt" },
 	},
 	formatters = {
+		gci = {
+			args = function(_, ctx)
+				local args = { "write", "--skip-generated", "--skip-vendor" }
+				local sections, custom_order = golangci_gci_settings(ctx.dirname)
+				for _, section in ipairs(sections) do
+					vim.list_extend(args, { "-s", section })
+				end
+				if custom_order then
+					table.insert(args, "--custom-order")
+				end
+				table.insert(args, "$FILENAME")
+				return args
+			end,
+		},
 		jq = {
 			command = "jq",
 			args = { "-S", "--indent", "2", "--ascii-output", "." },
