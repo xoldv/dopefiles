@@ -66,3 +66,6 @@ function y() {
 # Keybindings
 bindkey -s '^T' '~/tmux-sessionizer\n'
 bindkey '^b' beginning-of-line
+
+# opencode
+export PATH=/Users/dlk/.opencode/bin:$PATH
