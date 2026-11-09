@@ -37,6 +37,7 @@ alias zi=__zoxide_zi
 alias n=nvim
 alias vim=nvim
 alias lg=lazygit
+alias cr=tuicr
 alias venv='. .venv/bin/activate'
 alias syncvault='git commit -m "vault backup: $(date "+%Y-%m-%d %H:%M:%S")"'
 alias ipyright='[ -f pyrightconfig.json ] && echo "pyrightconfig.json already exists" || echo "{\n  \"venvPath\": \".\",\n  \"venv\": \".venv\",\n  \"extraPaths\": [\"src\"]\n}" > pyrightconfig.json'
