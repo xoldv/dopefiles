@@ -9,7 +9,7 @@ vim.pack.add({
 local dap = require("dap")
 local debugmaster = require("debugmaster")
 
-require("dap-python").setup("/opt/homebrew/bin/python3")
+require("dap-python").setup("/opt/homebrew/bin/debugpy-adapter")
 require("dap-go").setup()
 require("nvim-dap-virtual-text").setup()
 
@@ -29,6 +29,16 @@ vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
 vim.keymap.set("n", "<leader>?", function()
 	debugmaster.eval(nil, { enter = true })
 end)
+vim.keymap.set("n", "<leader>df", function()
+	-- the first configuration for the filetype runs the current file (python: "file", go: "Debug")
+	local config = (dap.configurations[vim.bo.filetype] or {})[1]
+	if not config then
+		vim.notify("No DAP configuration for " .. vim.bo.filetype, vim.log.levels.WARN)
+		return
+	end
+	vim.cmd("silent! write")
+	dap.run(config)
+end, { desc = "Debug current file" })
 vim.keymap.set("n", "<leader>dq", function()
 	debugmaster.mode.disable()
 	dap.terminate()
