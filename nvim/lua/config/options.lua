@@ -79,24 +79,6 @@ vim.filetype.add({
 	},
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.opt_local.wrap = true
-        vim.opt_local.conceallevel = 2
-        vim.opt_local.cursorcolumn = false
-        vim.opt_local.colorcolumn = "0"
-        vim.opt_local.linebreak = true
-        vim.opt_local.breakindent = true
-
-		vim.keymap.set({ "n", "v" }, "j", "gj", { silent = true, buffer = true })
-		vim.keymap.set({ "n", "v" }, "k", "gk", { silent = true, buffer = true })
-		vim.keymap.set("n", "$", "g$", { silent = true, buffer = true })
-		vim.keymap.set("n", "0", "g0", { silent = true, buffer = true })
-		vim.keymap.set("n", "^", "g^", { silent = true, buffer = true })
-	end,
-})
-
 -- netrw: hide dotfiles, but keep ./ and ../
 vim.g.netrw_list_hide = [[^node_modules/$,^__pycache__/$,\(^\|\s\s\)\zs\.\(\.\=/\)\@!\S\+]]
 -- startup directory, used by netrw "g." mapping (after/ftplugin/netrw.lua)
