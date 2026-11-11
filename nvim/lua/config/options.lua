@@ -39,7 +39,6 @@ vim.o.synmaxcol = 300
 vim.o.updatetime = 300
 vim.o.redrawtime = 10000
 vim.o.maxmempattern = 20000
-vim.diagnostic.enable = true
 vim.diagnostic.config({
 	virtual_text = {
 		spacing = 2,
@@ -83,3 +82,7 @@ vim.filetype.add({
 vim.g.netrw_list_hide = [[^node_modules/$,^__pycache__/$,\(^\|\s\s\)\zs\.\(\.\=/\)\@!\S\+]]
 -- startup directory, used by netrw "g." mapping (after/ftplugin/netrw.lua)
 vim.g.start_dir = vim.fn.getcwd()
+
+-- built-in optional packages
+vim.cmd("packadd nvim.difftool")
+vim.cmd("packadd nvim.undotree")
