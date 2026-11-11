@@ -48,3 +48,6 @@ vim.keymap.set("n", "<leader>te", function()
 end)
 
 vim.keymap.set("n", "*", "*N", { noremap = true, silent = true })
+
+-- netrw
+vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "File explorer (netrw)" })

@@ -96,3 +96,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "^", "g^", { silent = true, buffer = true })
 	end,
 })
+
+-- netrw: hide dotfiles, but keep ./ and ../
+vim.g.netrw_list_hide = [[^node_modules/$,^__pycache__/$,\(^\|\s\s\)\zs\.\(\.\=/\)\@!\S\+]]
+-- startup directory, used by netrw "g." mapping (after/ftplugin/netrw.lua)
+vim.g.start_dir = vim.fn.getcwd()
