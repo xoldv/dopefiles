@@ -78,11 +78,6 @@ vim.filetype.add({
 	},
 })
 
--- netrw: hide dotfiles, but keep ./ and ../
-vim.g.netrw_list_hide = [[^node_modules/$,^__pycache__/$,\(^\|\s\s\)\zs\.\(\.\=/\)\@!\S\+]]
--- startup directory, used by netrw "g." mapping (after/ftplugin/netrw.lua)
-vim.g.start_dir = vim.fn.getcwd()
-
 -- built-in optional packages
 vim.cmd("packadd nvim.difftool")
 vim.cmd("packadd nvim.undotree")
