@@ -3,7 +3,6 @@ window-decoration = true
 font-family = Iosevka Term
 font-size = 21
 
-cursor-style = underline
 macos-option-as-alt = true
 keybind = shift+enter=text:\x1b\r
 keybind = super+digit_1=text:\x1b1
@@ -18,3 +17,11 @@ background-image-fit = cover
 background-image-position = center
 background-image-opacity = 0.1
 confirm-close-surface = false
+
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = notify,bell
+notify-on-command-finish-after = 10s
+
+keybind = global:alt+grave_accent=toggle_quick_terminal
+quick-terminal-position = right
+quick-terminal-animation-duration = 0
