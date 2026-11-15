@@ -15,7 +15,7 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Prompt (gitstatus)
 source ~/gitstatus/gitstatus.prompt.zsh
-export PS1='%F{green}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
+export PS1='%F{#ba3d40}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
 
 # Editor
 export EDITOR='nvim'
