@@ -1,0 +1,220 @@
+# noir — ported 1:1 from ~/personal/noir.nvim (lua/noir/palette.lua + lua/noir/init.lua, dark)
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Manager {{{
+
+[mgr]
+cwd = { fg = "#5f87af" }
+
+# Find
+find_keyword  = { fg = "#d787af", bold = true, italic = true, underline = true }
+find_position = { fg = "#8787af", bg = "reset", bold = true, italic = true }
+
+# Symlink
+symlink_target = { fg = "#767676", italic = true }
+
+# Marker — reuse noir's own Diff colors 1:1 (copied=DiffAdd, cut=DiffDelete, selected=DiffChange)
+marker_copied   = { fg = "#416241", bg = "#416241" }
+marker_cut      = { fg = "#722529", bg = "#722529" }
+marker_marked   = { fg = "#d787af", bg = "#d787af" }
+marker_selected = { fg = "#333333", bg = "#333333" }
+
+# Count
+count_copied   = { fg = "#bcbcbc", bg = "#416241" }
+count_cut      = { fg = "#bcbcbc", bg = "#722529" }
+count_selected = { fg = "#000000", bg = "#d7875f" }
+
+# Border — matches FloatBorder -> NonText -> ignore_hard
+border_symbol = "│"
+border_style  = { fg = "#444444" }
+
+# Highlighting
+syntect_theme = ""
+
+# : }}}
+
+
+# : Tabs {{{
+# noir's TabLine/TabLineFill link Normal (no bg), TabLineSel links Special (no bg either) — text-only, no fill.
+
+[tabs]
+active   = { fg = "#8787af", bold = true }
+inactive = { fg = "#585858" }
+
+# Flat, no Powerline pill/arrow glyphs
+sep_inner = { open = " ", close = "" }
+sep_outer = { open = " ", close = " " }
+
+# : }}}
+
+
+# : Mode {{{
+# noir never colors ModeMsg (links Normal); the closest real analogue is Visual (fg=interesting, bg=over_bg).
+
+[mode]
+normal_main = { bold = true }
+normal_alt  = {}
+
+select_main = { fg = "#5f87af", bg = "#262626", bold = true }
+select_alt  = { fg = "#5f87af", bg = "#262626" }
+
+unset_main = { fg = "#d7875f", bold = true }
+unset_alt  = { fg = "#d7875f" }
+
+# : }}}
+
+
+# : Indicator of hovered file {{{
+# noir's Visual: fg=interesting, bg=over_bg — used in place of generic reverse-video.
+
+[indicator]
+parent  = { fg = "#585858", bg = "#262626" }
+current = { fg = "#5f87af", bg = "#262626" }
+preview = { underline = true }
+padding = { open = "", close = "" }
+
+# : }}}
+
+
+# : Status bar {{{
+# noir's StatusLine: bg=over_bg, fg=none (default text) — the bar itself carries the only bg fill.
+
+[status]
+overall   = { bg = "#262626" }
+sep_left  = { open = " ", close = "" }
+sep_right = { open = "", close = " " }
+
+# Permissions
+perm_sep   = { fg = "#585858" }
+perm_type  = { fg = "#5f87af" }
+perm_read  = { fg = "#d7875f" }
+perm_write = { fg = "#d75f5f" }
+perm_exec  = { fg = "#87af87" }
+
+# Progress
+progress_label  = { bold = true }
+progress_normal = { fg = "#bcbcbc", bg = "#416241" }
+progress_error  = { fg = "#bcbcbc", bg = "#722529" }
+
+# : }}}
+
+
+# : Which {{{
+# noir's WildMenu: fg=highlight, bg=over_bg.
+
+[which]
+mask            = { bg = "#262626" }
+cand            = { fg = "#d787af" }
+rest            = { fg = "#585858" }
+desc            = { fg = "#8787af" }
+separator_style = { fg = "#585858" }
+
+# : }}}
+
+
+# : Confirmation {{{
+
+[confirm]
+border  = { fg = "#444444" }
+title   = { fg = "#5f87af" }
+btn_yes = { fg = "#5f87af", bg = "#262626", bold = true }
+btn_no  = {}
+
+# : }}}
+
+
+# : Spotter {{{
+
+[spot]
+border   = { fg = "#444444" }
+title    = { fg = "#5f87af" }
+tbl_col  = { fg = "#5f87af" }
+tbl_cell = { fg = "#5f87af", bg = "#262626" }
+
+# : }}}
+
+
+# : Notification {{{
+# matches Diagnostic{Ok,Warn,Error}
+
+[notify]
+title_info  = { fg = "#87af87" }
+title_warn  = { fg = "#d7875f" }
+title_error = { fg = "#d75f5f" }
+
+# : }}}
+
+
+# : Picker {{{
+
+[pick]
+border   = { fg = "#444444" }
+active   = { fg = "#d787af", bold = true }
+inactive = {}
+
+# : }}}
+
+
+# : Input {{{
+# noir's Visual again, for the selected span.
+
+[input]
+border   = { fg = "#444444" }
+title    = {}
+value    = {}
+selected = { fg = "#5f87af", bg = "#262626" }
+
+# : }}}
+
+
+# : Completion {{{
+# noir's Pmenu / PmenuSel: item text=ignore_light on over_bg, selected=accent_light on bg, underlined (no reverse block).
+
+[cmp]
+border   = { fg = "#444444" }
+active   = { fg = "#949494", bg = "#000000", underline = true }
+inactive = { fg = "#767676" }
+
+# : }}}
+
+
+# : Task manager {{{
+
+[tasks]
+border  = { fg = "#444444" }
+title   = {}
+hovered = { fg = "#5f87af", bg = "#262626", bold = true }
+
+# : }}}
+
+
+# : Help menu {{{
+
+[help]
+border  = { fg = "#444444" }
+chord   = { fg = "#5f87af" }
+action  = {}
+hovered = { fg = "#5f87af", bg = "#262626", bold = true }
+
+# : }}}
+
+
+# : File-specific styles {{{
+# fg-only, same restraint as noir's own filetype-ish highlights (NeoTreeGit*, Diagnostic*); only
+# broken/dummy entries get a (muted) fill, mirroring how noir flags SpellBad/DiffDelete.
+
+[filetype]
+rules = [
+	{ mime = "image/*", fg = "#d7875f" },
+	{ mime = "{audio,video}/*", fg = "#d787af" },
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#875f5f" },
+	{ mime = "application/{pdf,doc,rtf}", fg = "#5f87af" },
+	{ mime = "vfs/{absent,stale}", fg = "#585858" },
+	{ url = "*", is = "orphan", bg = "#722529" },
+	{ url = "*", is = "exec"  , fg = "#87af87" },
+	{ url = "*", is = "dummy", bg = "#722529" },
+	{ url = "*/", is = "dummy", bg = "#722529" },
+	{ url = "*/", fg = "#5f87af" },
+]
+
+# : }}}

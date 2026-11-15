@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- noir tmTheme, ported from ~/personal/noir.nvim (lua/noir/init.lua, dark), for yazi's bat/syntect file preview -->
+
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>noir</string>
+	<key>settings</key>
+	<array>
+		<dict>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#000000</string>
+				<key>caret</key>
+				<string>#bcbcbc</string>
+				<key>foreground</key>
+				<string>#bcbcbc</string>
+				<key>invisibles</key>
+				<string>#444444</string>
+				<key>lineHighlight</key>
+				<string>#262626</string>
+				<key>selection</key>
+				<string>#262626</string>
+				<key>findHighlight</key>
+				<string>#d787af</string>
+				<key>findHighlightForeground</key>
+				<string>#000000</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comment</string>
+			<key>scope</key>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#585858</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String</string>
+			<key>scope</key>
+			<string>string</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5f875f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String interpolation / regexp</string>
+			<key>scope</key>
+			<string>constant.character.escaped, constant.character.escape, string.regexp</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8787af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Number</string>
+			<key>scope</key>
+			<string>constant.numeric</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#87af87</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Boolean and char, linked to Number like noir's Boolean/Character</string>
+			<key>scope</key>
+			<string>constant.language, constant.character</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#87af87</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Other constant -- noir links plain Constant to Normal, left uncolored</string>
+			<key>scope</key>
+			<string>constant.other</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#bcbcbc</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Variable -- noir links @variable to Normal, uncolored</string>
+			<key>scope</key>
+			<string>variable, variable.parameter, variable.other</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#bcbcbc</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Builtin / language variable -- noir's @variable.builtin links String</string>
+			<key>scope</key>
+			<string>variable.language, support.other.variable</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5f875f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Keyword -- noir's @keyword: ignore_light, italic, no bright hue</string>
+			<key>scope</key>
+			<string>keyword, keyword.control</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#767676</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Operator / punctuation -- noir's Operator/Delimiter link Noise</string>
+			<key>scope</key>
+			<string>keyword.operator, punctuation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#767676</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage -- noir's @keyword.storage links User2 = interesting</string>
+			<key>scope</key>
+			<string>storage</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5f87af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage type / builtin type -- noir's @type.builtin links User3</string>
+			<key>scope</key>
+			<string>storage.type</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#875f5f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Class / type name -- noir's Type/TypeDef link User3 = warning_deeper</string>
+			<key>scope</key>
+			<string>entity.name.class, entity.name.type, entity.other.inherited-class, support.type, support.class</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#875f5f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Function name / call -- noir's @function.call / @function.method.call: special, italic</string>
+			<key>scope</key>
+			<string>entity.name.function, support.function, variable.function</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#8787af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Macro / preprocessor -- noir's Macro links User2 = interesting</string>
+			<key>scope</key>
+			<string>entity.name.function.macro, meta.preprocessor</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#5f87af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Tag name -- noir's Tag links Normal, uncolored</string>
+			<key>scope</key>
+			<string>entity.name.tag</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#bcbcbc</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Tag attribute</string>
+			<key>scope</key>
+			<string>entity.other.attribute-name</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#767676</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Invalid -- noir's Error: negative, no bg fill</string>
+			<key>scope</key>
+			<string>invalid</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>underline</string>
+				<key>foreground</key>
+				<string>#d75f5f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Invalid deprecated</string>
+			<key>scope</key>
+			<string>invalid.deprecated</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7875f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff header</string>
+			<key>scope</key>
+			<string>meta.diff, meta.diff.header</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#585858</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff inserted -- noir's GitSignsAdd / DiffAdd</string>
+			<key>scope</key>
+			<string>markup.inserted</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#87af87</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff deleted -- noir's GitSignsDelete / DiffDelete</string>
+			<key>scope</key>
+			<string>markup.deleted</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#722529</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diff changed -- noir's GitSignsChange</string>
+			<key>scope</key>
+			<string>markup.changed</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7875f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown heading -- Title-like</string>
+			<key>scope</key>
+			<string>markup.heading</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#5f87af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown blockquote -- Comment-like</string>
+			<key>scope</key>
+			<string>markup.quote</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#585858</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown raw / code span -- Special-like</string>
+			<key>scope</key>
+			<string>markup.raw.inline, markup.raw.block</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8787af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown link label -- noir's @markup.link.label: special, italic</string>
+			<key>scope</key>
+			<string>string.other.link, markup.underline.link</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#8787af</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown link URL -- noir's @markup.link.url: Noise</string>
+			<key>scope</key>
+			<string>markup.underline.link.markdown, meta.link</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#767676</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown list punctuation</string>
+			<key>scope</key>
+			<string>punctuation.definition.list_item.markdown</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#767676</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Markdown bold/italic</string>
+			<key>scope</key>
+			<string>markup.bold, markup.italic</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#bcbcbc</string>
+			</dict>
+		</dict>
+	</array>
+	<key>uuid</key>
+	<string>4a9e6e6a-2f8b-4f2e-9b1e-8e9f9f7c9a3e</string>
+	<key>colorSpaceName</key>
+	<string>sRGB</string>
+	<key>semanticClass</key>
+	<string>theme.noir</string>
+</dict>
+</plist>
