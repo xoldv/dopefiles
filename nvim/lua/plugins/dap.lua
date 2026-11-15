@@ -13,6 +13,13 @@ require("dap-python").setup("/opt/homebrew/bin/debugpy-adapter")
 require("dap-go").setup()
 require("nvim-dap-virtual-text").setup()
 
+-- debugmaster registers its dap hooks lazily (on first mode toggle); init now so behaviour is always the same
+require("debugmaster.plugins").init()
+-- keep the side panel with the program output open after the program ends; <leader>dq closes it
+for _, event in ipairs({ "event_terminated", "event_exited", "disconnect" }) do
+	dap.listeners.before[event]["debugmaster"] = nil
+end
+
 vim.keymap.set({ "n", "v" }, "<leader>z", debugmaster.mode.toggle, { nowait = true })
 vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint)
 
@@ -37,9 +44,13 @@ vim.keymap.set("n", "<leader>df", function()
 		return
 	end
 	vim.cmd("silent! write")
+	-- show the program output in the debugmaster terminal section
+	local state = require("debugmaster.state")
+	state.sidepanel:set_active_with_open(state.terminal)
 	dap.run(config)
 end, { desc = "Debug current file" })
 vim.keymap.set("n", "<leader>dq", function()
 	debugmaster.mode.disable()
 	dap.terminate()
+	require("debugmaster.state").sidepanel:close()
 end, { desc = "Close debugger" })
