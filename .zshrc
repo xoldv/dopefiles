@@ -1,14 +1,19 @@
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+# Options
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT INTERACTIVE_COMMENTS
+bindkey -e  # emacs keys (otherwise zsh picks vi mode because EDITOR=nvim)
+
 # History
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY EXTENDED_HISTORY HIST_VERIFY
 
 # Completion
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*'  # case-insensitive
+zstyle ':completion:*' list-colors ''
+export CLICOLOR=1
 
 # zsh-autosuggestions (brew install zsh-autosuggestions)
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -19,14 +24,6 @@ export PS1='%F{#ba3d40}%n@%m:%~%f${GITSTATUS_PROMPT}$ '
 
 # Editor
 export EDITOR='nvim'
-
-# PATH
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:/Users/dlk/.spicetify"
 
 # zoxide
 export _ZO_DOCTOR=0
@@ -66,6 +63,19 @@ function y() {
 # Keybindings
 bindkey -s '^T' '~/tmux-sessionizer\n'
 bindkey '^b' beginning-of-line
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search '^[OB' down-line-or-beginning-search
+bindkey '^[[3~' delete-char
+bindkey '^[[1;3D' backward-word '^[[1;3C' forward-word
+autoload -U edit-command-line && zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
-# opencode
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:/Users/dlk/.spicetify"
 export PATH=/Users/dlk/.opencode/bin:$PATH
